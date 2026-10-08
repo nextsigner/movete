@@ -1,0 +1,1 @@
+Se edita main.qml 1
