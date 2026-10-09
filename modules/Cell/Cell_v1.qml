@@ -61,16 +61,17 @@ Rectangle{
             Repeater{
                 id: repActividades
                 Rectangle{
+                    id: xCell
                     width: (r.width-btnAdd.width)/repActividades.model.length
                     height: r.altoBotones
                     border.width: 1
                     border.color: 'white'
                     color: '#ff8833'
+                    property var j: JSON.parse(modelData)
                     Image{
-                        //anchors.fill: parent
                         width: parent.height*0.9
                         height: width
-                        source: 'file:./imgs/abdominales.jpeg'
+                        source: 'file:./imgs/'+xCell.j.data.actividad+'.jpeg'
                         anchors.centerIn: parent
                     }
                     Text{
