@@ -1,4 +1,5 @@
 import QtQuick
+import FormAddAct 1.0
 
 Rectangle{
     id: r
@@ -16,6 +17,7 @@ Rectangle{
     onDChanged: actualizar()
     //onMChanged: actualizar()
     //onAChanged: actualizar()
+    FormAddAct{id: formAddAct;parent: visible?xApp:r}
     Column{
         id: col
         //spacing: app.fs*0.25
@@ -41,6 +43,8 @@ Rectangle{
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
+                        formAddAct.visible=true
+                        return
                         const fecha = '9/10/2026';
                         const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
                         let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
