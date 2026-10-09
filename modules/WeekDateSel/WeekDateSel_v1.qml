@@ -17,7 +17,7 @@ Item {
         Column {
             anchors.centerIn: parent
             spacing: 10
-            anchors.horizontalCenter: parent.horizontalCenter
+
 
             Text {
                 text: "Desliza hacia la izquierda o derecha"
