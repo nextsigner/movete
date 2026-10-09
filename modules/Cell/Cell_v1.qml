@@ -31,7 +31,7 @@ Rectangle{
                 id: repActividades
                 Rectangle{
                     width: r.width/repActividades.model.length
-                    height: r.height
+                    height: app.fs*6
                     border.width: 1
                     border.color: 'white'
                     color: '#ff8833'
