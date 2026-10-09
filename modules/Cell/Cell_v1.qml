@@ -26,18 +26,43 @@ Rectangle{
             color: apps.fontColor
 
         }
-        Text{
+        Row{
+            Repeater{
+                id: repActividades
+                Rectangle{
+                    width: r.width/repActividades.model.length
+                    height: r.height
+                    border.width: 1
+                    border.color: 'white'
+                    color: '#ff8833'
+                    Text{
+                        text: JSON.parse(modelData).actividad
+                        color: 'black'
+                        font.pixelSize: 10
+                        anchors.centerIn: parent
+                    }
+                }
+            }
+
+        }
+        /*Text{
             id: txt1
             text: '?'
             font.pixelSize: app.fs*2
             color: apps.fontColor
-        }
+        }*/
     }
     function actualizar(){
         let sql='SELECT json FROM registros WHERE fecha = "'+d+'/'+m+'/'+a+'";'
         let cons=unik.getSqlData(sql);
-        if(cons.length){
-            txt1.text+=' L:'+cons[0].col[0]
+        if(cons.length>0){
+            let a=[]
+            for(var i=0;i<cons.length;i++){
+                //txt1.text+=' L:'+cons[0].col[0]
+                a.push(cons[i].col[0])
+            }
+            repActividades.model=a
+
         }
     }
 }
