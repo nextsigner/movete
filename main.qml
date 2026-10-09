@@ -41,10 +41,11 @@ Window {
             }
             Column{
                 spacing: app.fs
-                anchors.centerIn: parent
+                anchors.horizontalCenter: parent.horizontalCenter
                 Repeater{
                     model: 7
                     Cell{
+                        width: xApp.width
                         ni:index
                     }
                 }
