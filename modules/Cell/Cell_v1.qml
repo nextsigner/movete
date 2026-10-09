@@ -34,8 +34,10 @@ Rectangle{
         }
     }
     function actualizar(){
-        let sql='SELECT json FROM registros WHERE fecha = "9/10/2026";'
+        let sql='SELECT json FROM registros WHERE fecha = "'+d+'/'+m+'/'+a+'";'
         let cons=unik.getSqlData(sql);
-        txt1.text+=' L:'+cons.length
+        if(cons.length){
+            txt1.text+=' L:'+cons.length
+        }
     }
 }
