@@ -112,7 +112,7 @@ Rectangle{
 
     }
     function actualizar(){
-        let sql='SELECT json FROM registros WHERE fecha = "'+d+'/'+m+'/'+a+'";'
+        let sql='SELECT json FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'";'
         let cons=unik.getSqlData(sql);
         //if(cons.length>0){
             let a=[]
