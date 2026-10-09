@@ -45,6 +45,7 @@ Rectangle{
                         const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
                         let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
                         let ejecutado = unik.sqlQuery(sql)
+                        txt0.text+='e: '+ejecutado
                         if(ejecutado){
                             actualizar()
                         }
