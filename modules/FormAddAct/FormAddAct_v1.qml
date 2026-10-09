@@ -64,7 +64,7 @@ Rectangle{
                     font.pixelSize: app.fs
                     color: 'white'
                 }
-                SpinBox {
+                /*SpinBox {
                     id: spSeries
                     anchors.centerIn: parent
 
@@ -77,7 +77,7 @@ Rectangle{
                     onValueChanged: {
                         console.log("El valor actual es:", enteroSpinBox.value)
                     }
-                }
+                }*/
 
             }
         }
