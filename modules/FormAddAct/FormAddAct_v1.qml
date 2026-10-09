@@ -1,94 +1,104 @@
 import QtQuick
 import QtQuick.Controls
 
-Rectangle{
+Rectangle {
     id: r
     color: apps.backgroundColor
     anchors.fill: parent
     visible: false
+
+    // Guardamos la actividad seleccionada y su índice para evitar recorrer el Flow
     property string cAct: ''
+    property int selectedIndex: -1
+
     onVisibleChanged: {
-        if(!visible)r.cAct=''
+        if (!visible) {
+            r.cAct = ''
+            r.selectedIndex = -1
+        }
     }
-    Column{
+
+    Column {
+        id: mainColumn
         spacing: app.fs
         anchors.centerIn: parent
-        Text{
+        width: parent.width * 0.9 // Evitamos desbordamientos
+
+        Text {
             text: "Agregar Actividad"
             font.pixelSize: app.fs
             color: 'white'
         }
-        Flow{
+
+        Flow {
             id: flow
             spacing: app.fs
-            width: r.width
-            Repeater{
-                model:['hidratarse', 'abdominales', 'sentadillas', 'flexiones']
-                Rectangle{
+            width: mainColumn.width
+
+            Repeater {
+                model: ['hidratarse', 'abdominales', 'sentadillas', 'flexiones']
+
+                delegate: Rectangle {
                     id: xAct
-                    width: app.fs*6
+                    width: app.fs * 6
                     height: width
                     color: 'black'
-                    border.width: selected?4:1
-                    border.color: selected?'red':'white'
-                    opacity: selected?1.0:0.75
-                    property bool selected: false
-                    property string act: modelData
-                    MouseArea{
+
+                    // Usamos r.selectedIndex en lugar de buscar en children
+                    property bool selected: (r.selectedIndex === index)
+
+                    border.width: selected ? 4 : 1
+                    border.color: selected ? 'red' : 'white'
+                    opacity: selected ? 1.0 : 0.75
+
+                    MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            //xAct.selected=!xAct.selected
-                            updateSel(xAct.act)
+                            r.selectedIndex = index
+                            r.cAct = modelData
                         }
                     }
-                    Image{
-                        width: parent.height*0.9
+
+                    Image {
+                        width: parent.height * 0.9
                         height: width
-                        source: 'file:./imgs/'+modelData+'.jpeg'
+                        source: 'file:./imgs/' + modelData + '.jpeg'
                         anchors.centerIn: parent
                     }
                 }
             }
-
         }
-        Column{
-            visible: r.cAct!==''
-            Text{
-                text: "Actividad: "+r.cAct
+
+        Column {
+            visible: r.cAct !== ''
+            spacing: app.fs / 2
+
+            Text {
+                text: "Actividad: " + r.cAct
                 font.pixelSize: app.fs
                 color: 'white'
             }
-            Row{
-                Text{
+
+            Row {
+                spacing: app.fs
+                Text {
                     text: "Series: "
                     font.pixelSize: app.fs
                     color: 'white'
+                    anchors.verticalCenter: spSeries.verticalCenter
                 }
                 SpinBox {
                     id: spSeries
-                    //from: 1      // Valor mínimo
-                    //to: 50       // Valor máximo
-                    value: 10    // Valor inicial (opcional)
-                    stepSize: 1  // Incremento por cada paso (por defecto es 1)
+                    from: 1
+                    to: 50
+                    value: 10
+                    stepSize: 1
 
-                    // Señal para detectar cuando cambia el valor
                     onValueChanged: {
                         console.log("El valor actual es:", spSeries.value)
                     }
                 }
-
             }
         }
     }
-}
-function updateSel(act){
-    for(var i=0;i<flow.children.length;i++){
-        if(flow.children[i].act===act){
-            flow.children[i].selected=true
-            r.cAct=act
-        }else{
-            flow.children[i].selected=false
-        }
-    }
-}
 }
