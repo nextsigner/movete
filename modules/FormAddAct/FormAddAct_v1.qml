@@ -90,11 +90,12 @@ Rectangle {
 
                 NsSpinBox {
                     id: spSeries
-                    //width: app.fs*8
+                    fs: app.fs
                     from: 1
                     to: 50
                     value: 1
                     stepSize: 1
+                    anchors.verticalCenter: spSeries.verticalCenter
                 }
             }
             Row {
@@ -107,10 +108,43 @@ Rectangle {
                 }
                 NsSpinBox {
                     id: spSeriesCant
+                    fs: app.fs
                     from: 1
                     to: 500
                     value: 10
                     stepSize: 1
+                    anchors.verticalCenter: spSeries.verticalCenter
+                }
+            }
+            Row{
+                spacing: app.fs
+                Text {
+                    text: "Cantidad total: "+(parseInt(spSeries.value*spSeriesCant.value))
+                    font.pixelSize: app.fs
+                    color: 'white'
+                    anchors.verticalCenter: spSeries.verticalCenter
+                }
+            }
+            Row{
+                spacing: app.fs
+                Button{
+                    text: 'Cancelar'
+                    onClicked: r.visible=false
+                }
+                Button{
+                    text: 'Agregar'
+                    onClicked: {
+                        let j={}
+                        const fecha = '9/10/2026';
+                        const jsonData = JSON.stringify({ actividad: r.cAct, series: spSeries.value, cantidad: spSeriesCant.value });
+                        let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
+                        let ejecutado = unik.sqlQuery(sql)
+                        //txt0.text+='e: '+ejecutado
+                        if(ejecutado){
+                            r.visible=false
+                            r.parent.actualizar()
+                        }
+                    }
                 }
             }
         }
