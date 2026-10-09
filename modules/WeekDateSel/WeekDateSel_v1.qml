@@ -6,12 +6,12 @@ Item {
     height: 300
 
     // Contenedor visual del componente
-//    Rectangle {
-//        anchors.fill: parent
-//        color: "#f8f9fa"
-//        border.color: "#ced4da"
-//        border.width: 1
-//        radius: 8
+    Rectangle {
+        anchors.fill: parent
+        color: "#f8f9fa"
+        border.color: "#ced4da"
+        border.width: 1
+        radius: 8
 
 //        // Texto informativo opcional para visualizar la fecha actual
 //        Column {
@@ -79,6 +79,6 @@ Item {
 //                }
 //            }
 //        }
-//    }
+    }
 
 }
