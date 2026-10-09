@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls
 
 Rectangle{
     id: r
@@ -6,6 +7,9 @@ Rectangle{
     anchors.fill: parent
     visible: false
     property string cAct: ''
+    onVisibleChanged: {
+        if(!visible)r.cAct=''
+    }
     Column{
         spacing: app.fs
         anchors.centerIn: parent
@@ -19,7 +23,7 @@ Rectangle{
             spacing: app.fs
             width: r.width
             Repeater{
-                model:['abdominales', 'sentadillas', 'flexiones', 'hidratarse']
+                model:['hidratarse', 'abdominales', 'sentadillas', 'flexiones']
                 Rectangle{
                     id: xAct
                     width: app.fs*6
@@ -47,11 +51,42 @@ Rectangle{
             }
 
         }
+        Column{
+            visible: r.cAct!==''
+            Text{
+                text: "Actividad: "+r.cAct
+                font.pixelSize: app.fs
+                color: 'white'
+            }
+            Row{
+                Text{
+                    text: "Series: "
+                    font.pixelSize: app.fs
+                    color: 'white'
+                }
+                SpinBox {
+                        id: spSeries
+                        anchors.centerIn: parent
+
+                        from: 1      // Valor mínimo
+                        to: 50       // Valor máximo
+                        value: 10    // Valor inicial (opcional)
+                        stepSize: 1  // Incremento por cada paso (por defecto es 1)
+
+                        // Señal para detectar cuando cambia el valor
+                        onValueChanged: {
+                            console.log("El valor actual es:", enteroSpinBox.value)
+                        }
+                    }
+                }
+            }
+        }
     }
     function updateSel(act){
         for(var i=0;i<flow.children.length;i++){
             if(flow.children[i].act===act){
                 flow.children[i].selected=true
+                r.cAct=act
             }else{
                 flow.children[i].selected=false
             }
