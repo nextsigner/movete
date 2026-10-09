@@ -65,31 +65,32 @@ Rectangle{
                     color: 'white'
                 }
                 SpinBox {
-                        id: spSeries
-                        anchors.centerIn: parent
+                    id: spSeries
+                    anchors.centerIn: parent
 
-                        from: 1      // Valor mínimo
-                        to: 50       // Valor máximo
-                        value: 10    // Valor inicial (opcional)
-                        stepSize: 1  // Incremento por cada paso (por defecto es 1)
+                    from: 1      // Valor mínimo
+                    to: 50       // Valor máximo
+                    value: 10    // Valor inicial (opcional)
+                    stepSize: 1  // Incremento por cada paso (por defecto es 1)
 
-                        // Señal para detectar cuando cambia el valor
-                        onValueChanged: {
-                            console.log("El valor actual es:", enteroSpinBox.value)
-                        }
+                    // Señal para detectar cuando cambia el valor
+                    onValueChanged: {
+                        console.log("El valor actual es:", enteroSpinBox.value)
                     }
                 }
+
             }
         }
     }
-    function updateSel(act){
-        for(var i=0;i<flow.children.length;i++){
-            if(flow.children[i].act===act){
-                flow.children[i].selected=true
-                r.cAct=act
-            }else{
-                flow.children[i].selected=false
-            }
+}
+function updateSel(act){
+    for(var i=0;i<flow.children.length;i++){
+        if(flow.children[i].act===act){
+            flow.children[i].selected=true
+            r.cAct=act
+        }else{
+            flow.children[i].selected=false
         }
     }
+}
 }
