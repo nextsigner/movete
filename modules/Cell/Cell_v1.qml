@@ -68,7 +68,7 @@ Rectangle{
                     color: '#ff8833'
                     Image{
                         anchors.fill: parent
-                        source: unik.currentFolder()+'/imgs/abdominales.jpeg'
+                        source: 'file:./imgs/abdominales.jpeg'
                     }
                     Text{
                         text: JSON.parse(modelData).data.actividad
