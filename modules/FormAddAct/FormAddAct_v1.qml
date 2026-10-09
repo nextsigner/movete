@@ -90,7 +90,7 @@ Rectangle {
 
                 NsSpinBox {
                     id: spSeries
-                    width: app.fs*8
+                    //width: app.fs*8
                     from: 1
                     to: 50
                     value: 1
