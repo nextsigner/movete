@@ -3,7 +3,7 @@ import QtQuick
 
 Rectangle {
     id: r
-    height: txt1.contentHeight+app.fs
+    height: txt1.contentHeight+txt0.contentHeight+app.fs*3
     color: apps.backgroundColor
     border.color: apps.fontColor
     border.width: 1
@@ -14,6 +14,7 @@ Rectangle {
         anchors.centerIn: parent
         spacing: app.fs
         Text {
+            id: txt0
             text: "Desliza hacia la izquierda o derecha"
             font.pixelSize: app.fs
             color: apps.fontColor
