@@ -18,7 +18,21 @@ Window {
         id: apps
         property color backgroundColor: 'black'
         property color fontColor: 'white'
-        property var currentWeek
+        property date currentWeek
+        onCurrentWeekChanged: {
+            let nd= new Date(currentWeek.getTime())
+            for(var i=0;i<7;i++){
+                nd.setDate(nd.getDate()+1)
+                let d=nd.getDate()
+                let m=nd.getMonth()+1
+                let a=nd.getFullYear()
+                colDias.children[i].d=d
+                colDias.children[i].m=m
+                colDias.children[i].a=a
+            }
+
+
+        }
     }
     Item{
         id: xApp
@@ -40,6 +54,7 @@ Window {
                 anchors.horizontalCenter: parent.horizontalCenter
             }
             Column{
+                id: colDias
                 spacing: app.fs
                 anchors.horizontalCenter: parent.horizontalCenter
                 Repeater{
