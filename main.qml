@@ -36,7 +36,6 @@ Window {
             anchors.centerIn: parent
             WeekDateSel{
                 width: xApp.width
-                height: app.fs*10
                 anchors.horizontalCenter: parent.horizontalCenter
             }
             Row{

@@ -3,6 +3,7 @@ import QtQuick
 
 Rectangle {
     id: r
+    height: txt1.contentHeight+app.fs
     color: apps.backgroundColor
     border.color: apps.fontColor
     border.width: 1
@@ -21,6 +22,9 @@ Rectangle {
         }
 
         Text {
+            id: txt1
+            width: r.width-app.fs
+            wrapMode: Text.WordWrap
             text: {
                 if (!app.currentWeek || isNaN(new Date(app.currentWeek).getTime())) {
                     return "Semana: No asignada"
