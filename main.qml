@@ -106,7 +106,7 @@ Window {
 //        // Ojo: Si el json tiene comillas dobles, asegúrate de escapar o usar comillas simples adecuadamente
 //        sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
 //        ejecutado = unik.sqlQuery(sql)
-        app.color=ejecutado?'blue':'red'
+        //app.color=ejecutado?'blue':'red'
 
 
     }
@@ -131,6 +131,6 @@ Window {
         //const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
         // Ojo: Si el json tiene comillas dobles, asegúrate de escapar o usar comillas simples adecuadamente
         let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
-        return = unik.sqlQuery(sql)
+        return unik.sqlQuery(sql)
     }
 }
