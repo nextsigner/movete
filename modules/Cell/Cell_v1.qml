@@ -3,7 +3,7 @@ import QtQuick
 Rectangle{
     id: r
     width: 50
-    height: txt0.contentHeight+app.fs
+    height: col.height+app.fs
     color: app.ciHoy===ni?'green':'black'
     border.width: 2
     border.color: apps.fontColor
@@ -15,16 +15,27 @@ Rectangle{
     onDChanged: actualizar()
     //onMChanged: actualizar()
     //onAChanged: actualizar()
-    Text{
-        id: txt0
-        text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a//+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
-        font.pixelSize: app.fs*2
-        color: apps.fontColor
+    Column{
+        id: col
+        spacing: app.fs*0.25
         anchors.centerIn: parent
+        Text{
+            id: txt0
+            text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a//+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
+            font.pixelSize: app.fs*2
+            color: apps.fontColor
+
+        }
+        Text{
+            id: txt1
+            text: '?'
+            font.pixelSize: app.fs*2
+            color: apps.fontColor
+        }
     }
     function actualizar(){
         let sql='SELECT json FROM registros WHERE fecha = "9/10/2026";'
         let cons=unik.getSqlData(sql);
-        txt0.text+=' L:'+cons.length
+        txt1.text+=' L:'+cons.length
     }
 }
