@@ -19,13 +19,13 @@ Item {
             spacing: 10
 
 
-            //            Text {
-            //                text: "Desliza hacia la izquierda o derecha"
-            //                font.pixelSize: 14
-            //                color: "#6c757d"
-            //                horizontalAlignment: Text.AlignHCenter
-            //                anchors.horizontalCenter: parent.horizontalCenter
-            //            }
+            Text {
+                text: "Desliza hacia la izquierda o derecha"
+                font.pixelSize: 14
+                color: "#6c757d"
+                horizontalAlignment: Text.AlignHCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
 
             //            Text {
             //                text: {
