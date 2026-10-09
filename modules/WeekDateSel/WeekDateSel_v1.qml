@@ -27,19 +27,19 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
-            //            Text {
-            //                text: {
-            //                    if (!app.                             || isNaN(new Date(app.currentWeek).getTime())) {
-            //                        return "Semana: No asignada"
-            //                    }
-            //                    let d = new Date(app.currentWeek)
-            //                    return "Semana del " + d.toLocaleDateString()
-            //                }
-            //                font.pixelSize: 20
-            //                color: "#212529"
-            //                horizontalAlignment: Text.AlignHCenter
-            //                anchors.horizontalCenter: parent.horizontalCenter
-            //            }
+                        Text {
+                            text: {
+                                if (!app.currentWeek || isNaN(new Date(app.currentWeek).getTime())) {
+                                    return "Semana: No asignada"
+                                }
+                                let d = new Date(app.currentWeek)
+                                return "Semana del " + d.toLocaleDateString()
+                            }
+                            font.pixelSize: 20
+                            color: "#212529"
+                            horizontalAlignment: Text.AlignHCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
         }
 
 
