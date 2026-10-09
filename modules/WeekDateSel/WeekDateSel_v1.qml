@@ -36,7 +36,6 @@ Item {
                     return "Semana del " + d.toLocaleDateString()
                 }
                 font.pixelSize: 20
-                font.bold: true
                 color: "#212529"
                 horizontalAlignment: Text.AlignHCenter
                 anchors.horizontalCenter: parent.horizontalCenter
