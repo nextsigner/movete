@@ -54,8 +54,11 @@ Rectangle{
         }*/
     }
     Rectangle{
-        width: app.fs
+        width: r.height-4
         height: width
+        anchors.right: parent.right
+        anchors.rightMargin: 2
+        anchors.verticalCenter: parent.verticalCenter
         MouseArea{
             anchors.fill: parent
             onClicked: {
