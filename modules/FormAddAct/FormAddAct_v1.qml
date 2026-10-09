@@ -89,10 +89,18 @@ Rectangle {
                 }
                 SpinBox {
                     id: spSeries
+                    color: 'red'
                     from: 1
                     to: 50
                     value: 10
                     stepSize: 1
+                    anchors.verticalCenter: spSeries.verticalCenter
+                    Rectangle{
+                        anchors.fill: parent
+                        color: 'transparent'
+                        border.width: 1
+                        border.color: 'white'
+                    }
 
                     onValueChanged: {
                         console.log("El valor actual es:", spSeries.value)
