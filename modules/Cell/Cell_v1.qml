@@ -120,7 +120,7 @@ Rectangle{
         for(var i=0;i<cons.length;i++){
             //txt1.text+=' L:'+cons[0].col[0]
             json.id=cons[i].col[0]
-            json.data=cons[i].col[1]
+            json.data=JSON.parse(cons[i].col[1])
             a.push(JSON.stringify(json))
         }
         repActividades.model=a
