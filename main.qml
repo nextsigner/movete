@@ -94,6 +94,13 @@ Window {
         status.text='Ejecutado: '+ejecutado
         console.log('Ejecutado: '+ejecutado)
     }
+    Timer{
+        id: checkHoy
+        running: true
+        repeat: true
+        interval: 1000
+        onTriggered: checkHoy()
+    }
 
     Shortcut{
         sequence: 'Esc'
