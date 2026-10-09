@@ -3,11 +3,12 @@ import QtQuick.Controls
 
 SpinBox {
     id: r
-    width: app.fs*8
-    property int wi: 100 //Ancho del espacio del dato
+    width: fs*8+(fs*(''+r.value).length)//app.fs*8
+    //property int wi: 100 //Ancho del espacio del dato
     // 1. Campo de texto interno (letra blanca)
+    property int fs: 20
     contentItem: TextInput {
-        width: r.wi
+        //width: r.wi
         text: r.textFromValue(r.value, r.locale)
         font.pixelSize: app.fs*2
         color: "white"
@@ -20,6 +21,7 @@ SpinBox {
 
     // 2. Fondo y borde general del SpinBox
     background: Rectangle {
+        width: r.width
         color: "transparent"
         border.color: "white"
         border.width: 1
