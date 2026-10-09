@@ -31,6 +31,15 @@ Window {
             font.pixelSize: app.fs
             color: apps.fontColor
         }
+        Row{
+            spacing: app.fs
+            Repeater{
+                model: 3
+                Cell{
+
+                }
+            }
+        }
     }
 
 
