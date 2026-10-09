@@ -45,7 +45,7 @@ Rectangle{
                         const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
                         let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
                         let ejecutado = unik.sqlQuery(sql)
-                        txt0.text+='e: '+ejecutado
+                        //txt0.text+='e: '+ejecutado
                         if(ejecutado){
                             actualizar()
                         }
@@ -67,7 +67,7 @@ Rectangle{
                     border.color: 'white'
                     color: '#ff8833'
                     Text{
-                        text: JSON.parse(modelData).actividad
+                        text: JSON.parse(modelData).data.actividad
                         color: 'black'
                         font.pixelSize: 10
                         anchors.centerIn: parent
@@ -112,15 +112,18 @@ Rectangle{
 
     }
     function actualizar(){
-        let sql='SELECT json FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'";'
+        let sql='SELECT id, json FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'";'
         let cons=unik.getSqlData(sql);
         //if(cons.length>0){
-            let a=[]
-            for(var i=0;i<cons.length;i++){
-                //txt1.text+=' L:'+cons[0].col[0]
-                a.push(cons[i].col[0])
-            }
-            repActividades.model=a
+        let a=[]
+        let json={}
+        for(var i=0;i<cons.length;i++){
+            //txt1.text+=' L:'+cons[0].col[0]
+            json.id=cons[i].col[0]
+            json.data=cons[i].col[1]
+            a.push(JSON.stringify(json))
+        }
+        repActividades.model=a
 
         //}
     }
