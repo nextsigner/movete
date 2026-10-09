@@ -36,6 +36,7 @@ Window {
         }
         Row{
             spacing: app.fs
+            anchors.centerIn: parent
             Repeater{
                 model: 3
                 Cell{
