@@ -87,36 +87,68 @@ Rectangle {
                     color: 'white'
                     anchors.verticalCenter: spSeries.verticalCenter
                 }
+
                 SpinBox {
                     id: spSeries
                     from: 1
                     to: 50
-                    value: 10
+                    value: 1
                     stepSize: 1
 
-                    // 1. Estilo para el campo de texto interno (letra blanca)
+                    // 1. Campo de texto interno (letra blanca)
                     contentItem: TextInput {
                         text: spSeries.textFromValue(spSeries.value, spSeries.locale)
-
-                        font.pixelSize: app.fs
-                        color: "white"          // <-- Letra blanca
-                        selectionColor: "gray"
-                        selectedTextColor: "white"
+                        font.pixelSize: app.fs*2
+                        color: "white"
                         horizontalAlignment: Qt.AlignHCenter
                         verticalAlignment: Qt.AlignVCenter
-
-                        // Mantiene sincronizado el valor al escribir manualmente
                         readOnly: !spSeries.editable
                         validator: spSeries.validator
                         inputMethodHints: spSeries.inputMethodHints
                     }
 
-                    // 2. Estilo para el fondo/borde del SpinBox
+                    // 2. Fondo y borde general del SpinBox
                     background: Rectangle {
-                        color: "transparent"    // Fondo transparente (o el color que prefieras)
-                        border.color: "white"   // <-- Borde blanco
+                        color: "transparent"
+                        border.color: "white"
                         border.width: 1
-                        radius: 4               // Opcional: esquinas redondeadas
+                        radius: 4
+                    }
+
+                    // 3. Botón de incremento (+)
+                    up.indicator: Rectangle {
+                        x: spSeries.mirrored ? 0 : parent.width - width
+                        height: parent.height
+                        width: height // Botón cuadrado
+                        color: spSeries.up.pressed ? "#444444" : "transparent"
+                        border.color: "white"
+                        border.width: 1
+                        radius: 4
+
+                        Text {
+                            text: "+"
+                            color: "white"
+                            font.pixelSize: app.fs * 1.2
+                            anchors.centerIn: parent
+                        }
+                    }
+
+                    // 4. Botón de decremento (-)
+                    down.indicator: Rectangle {
+                        x: spSeries.mirrored ? parent.width - width : 0
+                        height: parent.height
+                        width: height // Botón cuadrado
+                        color: spSeries.down.pressed ? "#444444" : "transparent"
+                        border.color: "white"
+                        border.width: 1
+                        radius: 4
+
+                        Text {
+                            text: "-"
+                            color: "white"
+                            font.pixelSize: app.fs * 1.2
+                            anchors.centerIn: parent
+                        }
                     }
 
                     onValueChanged: {
