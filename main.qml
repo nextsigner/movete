@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtCore
 import unik.Unik 1.0
 
+import WeekDateSel 1.0
 import Cell 1.0
 
 Window {
@@ -13,18 +14,14 @@ Window {
     title: "MOVETE"
     color: apps.backgroundColor
     property int fs: width*0.035
-    property var uAppsList: []
-    property bool isRunikStart: true
+    property var currentWeek
     Settings{
         id: apps
         property color backgroundColor: 'black'
         property color fontColor: 'white'
-        property string uIdApp: ''
     }
-    Rectangle{
+    Item{
         id: xApp
-        color: 'transparent'
-        //anchors.fill: parent
         width: parent.width-app.fs*4
         height: parent.height-app.fs*6
         anchors.centerIn: parent
@@ -34,13 +31,20 @@ Window {
             font.pixelSize: app.fs
             color: apps.fontColor
         }
-        Row{
+        Column{
             spacing: app.fs
             anchors.centerIn: parent
-            Repeater{
-                model: 3
-                Cell{
+            WeekDateSel{
+                width: xApp.width
+            }
+            Row{
+                spacing: app.fs
+                anchors.centerIn: parent
+                Repeater{
+                    model: 3
+                    Cell{
 
+                    }
                 }
             }
         }
