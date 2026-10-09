@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtCore
 import unik.Unik 1.0
 
-import WeekDateSel 1.0
+//import WeekDateSel 1.0
 import Cell 1.0
 
 Window {
@@ -34,9 +34,9 @@ Window {
         Column{
             spacing: app.fs
             anchors.centerIn: parent
-            WeekDateSel{
+            /*WeekDateSel{
                 width: xApp.width
-            }
+            }*/
             Row{
                 spacing: app.fs
                 anchors.centerIn: parent
