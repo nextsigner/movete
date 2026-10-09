@@ -67,14 +67,18 @@ Rectangle{
                     border.color: 'white'
                     color: '#ff8833'
                     Image{
-                        anchors.fill: parent
+                        //anchors.fill: parent
+                        width: parent.height*0.9
+                        height: width
                         source: 'file:./imgs/abdominales.jpeg'
+                        anchors.centerIn: parent
                     }
                     Text{
                         text: JSON.parse(modelData).data.actividad
                         color: 'black'
                         font.pixelSize: 10
                         anchors.centerIn: parent
+                        visible: false
                     }
                 }
             }
