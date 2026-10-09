@@ -14,6 +14,8 @@ Window {
     title: "MOVETE"
     color: apps.backgroundColor
     property int fs: width*0.035
+    property date hoy
+    property int ciHoy: -1
     Settings{
         id: apps
         property color backgroundColor: 'black'
@@ -22,7 +24,9 @@ Window {
         onCurrentWeekChanged: {
             let nd= new Date(currentWeek.getTime())
             for(var i=0;i<7;i++){
-                nd.setDate(nd.getDate()+1)
+                if(i>=1){
+                    nd.setDate(nd.getDate()+1)
+                }
                 let d=nd.getDate()
                 let m=nd.getMonth()+1
                 let a=nd.getFullYear()
@@ -75,6 +79,7 @@ Window {
             let nd=new Date(Date.now())
             apps.currentWeek=wd.toMonday(nd)
         }
+        app.hoy=new Date(Date.now())
         let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
         unik.sqliteInit(dataBaseFullPath)
         let sql='CREATE TABLE IF NOT EXISTS tabla2
@@ -93,6 +98,18 @@ Window {
     Shortcut{
         sequence: 'Esc'
         onActivated: Qt.quit()
+    }
+    function checkHoy(){
+        let d=app.hoy.getDate()
+        let m=app.hoy.getMonth()+1
+        let a=app.hoy.getFullYear()
+        let sHoy=''+d+'/'+m+'/'+a
+        for(var i=0;i<7;i++){
+            let sCell=''+colDias.children[i].d+'/'+colDias.children[i].m+'/'+colDias.children[i].a
+            if(sHoy===sCell){
+                app.ciHoy=i
+            }
+        }
     }
 
 }

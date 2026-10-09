@@ -4,7 +4,7 @@ Rectangle{
     id: r
     width: 50
     height: txt0.contentHeight+app.fs
-    color: 'green'
+    color: app.ciHoy===ni?'green':'black'
     border.width: 2
     border.color: apps.fontColor
     property int ni: -1
@@ -15,7 +15,7 @@ Rectangle{
     Text{
         id: txt0
         text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a
-        font.pixelSize: app.fs
+        font.pixelSize: app.fs*2
         color: apps.fontColor
         anchors.centerIn: parent
     }
