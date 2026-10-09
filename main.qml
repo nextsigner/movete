@@ -29,6 +29,7 @@ Window {
         height: parent.height-app.fs*6
         anchors.centerIn: parent
         Text{
+            id: status
             text: app.title
             font.pixelSize: app.fs
             color: apps.fontColor
@@ -46,10 +47,25 @@ Window {
 
 
 
+    Component.onCompleted: {
+        let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
+        unik.sqliteInit(dataBaseFullPath)
+        let sql='CREATE TABLE IF NOT EXISTS tabla2
+                            (
+                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                nombre TEXT NOT NULL,
+                                apellido TEXT NOT NULL,
+                                edad NUMERIC NOT NULL,
+                                promedio DECIMAL(2,2) NOT NULL
+                            )'
+        let ejecutado = unik.sqlQuery(sql)
+        status.text='Ejecutado: '+ejecutado
+        console.log('Ejecutado: '+ejecutado)
+    }
 
     Shortcut{
         sequence: 'Esc'
         onActivated: Qt.quit()
     }
 
-    }
+}
