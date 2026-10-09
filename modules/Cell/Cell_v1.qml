@@ -12,6 +12,7 @@ Rectangle{
     property int d: -1
     property int m: -1
     property int a: -1
+    property int altoBotones: app.fs*6
     onDChanged: actualizar()
     //onMChanged: actualizar()
     //onAChanged: actualizar()
@@ -27,12 +28,13 @@ Rectangle{
 
         }
         Row{
-            anchors.horizontalCenter: parent.horizontalCenter
+            //anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
             visible: app.ciHoy===r.ni
             Rectangle{
                 id: btnAdd
                 width: app.fs*4
-                height: width
+                height: r.altoBotones
                 border.width: 1
                 border.color: 'white'
                 color: '#333'
@@ -59,7 +61,7 @@ Rectangle{
                 id: repActividades
                 Rectangle{
                     width: (r.width-btnAdd.width)/repActividades.model.length
-                    height: app.fs*6
+                    height: r.altoBotones
                     border.width: 1
                     border.color: 'white'
                     color: '#ff8833'
@@ -111,7 +113,7 @@ Rectangle{
     function actualizar(){
         let sql='SELECT json FROM registros WHERE fecha = "'+d+'/'+m+'/'+a+'";'
         let cons=unik.getSqlData(sql);
-        if(cons.length>0){
+        //if(cons.length>0){
             let a=[]
             for(var i=0;i<cons.length;i++){
                 //txt1.text+=' L:'+cons[0].col[0]
@@ -119,6 +121,6 @@ Rectangle{
             }
             repActividades.model=a
 
-        }
+        //}
     }
 }
