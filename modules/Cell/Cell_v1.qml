@@ -23,8 +23,8 @@ Rectangle{
         anchors.centerIn: parent
     }
     function actualizar(){
-//        let sql='SELECT json FROM registros WHERE fecha = "9/10/2026";'
-//        let cons=unik.getSqlData(sql);
-//        txt0.text+=' L:'+cons.length
+        let sql='SELECT json FROM registros WHERE fecha = "9/10/2026";'
+        let cons=unik.getSqlData(sql);
+        txt0.text+=' L:'+cons.length
     }
 }
