@@ -22,6 +22,7 @@ Window {
         property color fontColor: 'white'
         property date currentWeek
         onCurrentWeekChanged: {
+            app.ciHoy=-1
             let nd= new Date(currentWeek.getTime())
             for(var i=0;i<7;i++){
                 if(i>=1){
