@@ -90,6 +90,7 @@ Rectangle {
 
                 SpinBox {
                     id: spSeries
+                    width: app.fs*6
                     from: 1
                     to: 50
                     value: 1
@@ -118,8 +119,8 @@ Rectangle {
                     // 3. Botón de incremento (+)
                     up.indicator: Rectangle {
                         x: spSeries.mirrored ? 0 : parent.width - width
-                        height: parent.height
-                        width: height // Botón cuadrado
+                        height: app.fs*2//parent.height
+                        width: app.fs*2//height // Botón cuadrado
                         color: spSeries.up.pressed ? "#444444" : "transparent"
                         border.color: "white"
                         border.width: 1
@@ -136,8 +137,8 @@ Rectangle {
                     // 4. Botón de decremento (-)
                     down.indicator: Rectangle {
                         x: spSeries.mirrored ? parent.width - width : 0
-                        height: parent.height
-                        width: height // Botón cuadrado
+                        height: app.fs*2//parent.height
+                        width: app.fs*2//height // Botón cuadrado
                         color: spSeries.down.pressed ? "#444444" : "transparent"
                         border.color: "white"
                         border.width: 1
