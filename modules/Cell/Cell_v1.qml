@@ -13,8 +13,8 @@ Rectangle{
     property int m: -1
     property int a: -1
     onDChanged: actualizar()
-    onMChanged: actualizar()
-    onAChanged: actualizar()
+    //onMChanged: actualizar()
+    //onAChanged: actualizar()
     Text{
         id: txt0
         text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a//+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
