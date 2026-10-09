@@ -4,13 +4,10 @@ import QtQuick.Controls
 SpinBox {
     id: r
     width: app.fs*8
-    from: 1
-    to: 50
-    value: 1
-    stepSize: 1
-
+    property int wi: 100 //Ancho del espacio del dato
     // 1. Campo de texto interno (letra blanca)
     contentItem: TextInput {
+        width: r.wi
         text: r.textFromValue(r.value, r.locale)
         font.pixelSize: app.fs*2
         color: "white"
@@ -50,7 +47,7 @@ SpinBox {
         Text {
             text: "+"
             color: "white"
-            font.pixelSize: app.fs * 1.2
+            font.pixelSize: app.fs * 2//1.2
             anchors.centerIn: parent
         }
     }
@@ -76,12 +73,10 @@ SpinBox {
         Text {
             text: "-"
             color: "white"
-            font.pixelSize: app.fs * 1.2
+            font.pixelSize: app.fs * 2//1.2
             anchors.centerIn: parent
         }
     }
 
-    onValueChanged: {
-        console.log("El valor actual es:", r.value)
-    }
+
 }
