@@ -68,7 +68,7 @@ Rectangle{
                     color: '#ff8833'
                     Image{
                         anchors.fill: parent
-                        source: './imgs/abdominales.jpeg'
+                        source: unik.getPath(4)+'runik/movete-main/imgs/abdominales.jpeg'
                     }
                     Text{
                         text: JSON.parse(modelData).data.actividad
