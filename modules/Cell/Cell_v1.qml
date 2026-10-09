@@ -66,6 +66,10 @@ Rectangle{
                     border.width: 1
                     border.color: 'white'
                     color: '#ff8833'
+                    Image{
+                        anchors.fill: parent
+                        source: './imgs/abdominales.jpeg'
+                    }
                     Text{
                         text: JSON.parse(modelData).data.actividad
                         color: 'black'
