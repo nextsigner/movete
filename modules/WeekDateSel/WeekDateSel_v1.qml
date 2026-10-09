@@ -35,11 +35,11 @@ Rectangle {
             width: r.width - app.fs
             wrapMode: Text.WordWrap
             text: {
-                if (!app.currentWeek || isNaN(new Date(app.currentWeek).getTime())) {
+                if (!apps.currentWeek || isNaN(new Date(apps.currentWeek).getTime())) {
                     return "Semana: No asignada"
                 }
                 // Muestra siempre la fecha normalizada al Lunes de esa semana
-                let d = r.toMonday(new Date(app.currentWeek))
+                let d = r.toMonday(new Date(apps.currentWeek))
                 return "Semana del " + d.toLocaleDateString()
             }
             font.pixelSize: app.fs * 2
@@ -66,8 +66,8 @@ Rectangle {
 
             // Validar si el arrastre supera el umbral establecido
             if (Math.abs(delta) > threshold) {
-                // Obtener fecha actual o usar la fecha de hoy si app.currentWeek está vacía
-                let currentDate = app.currentWeek ? new Date(app.currentWeek) : new Date()
+                // Obtener fecha actual o usar la fecha de hoy si apps.currentWeek está vacía
+                let currentDate = apps.currentWeek ? new Date(apps.currentWeek) : new Date()
                 if (isNaN(currentDate.getTime())) {
                     currentDate = new Date()
                 }
@@ -84,7 +84,7 @@ Rectangle {
                 }
 
                 // Actualizar la propiedad en la ventana principal con el nuevo Lunes
-                app.currentWeek = currentDate
+                apps.currentWeek = currentDate
             }
         }
     }

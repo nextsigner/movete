@@ -14,11 +14,11 @@ Window {
     title: "MOVETE"
     color: apps.backgroundColor
     property int fs: width*0.035
-    property var currentWeek
     Settings{
         id: apps
         property color backgroundColor: 'black'
         property color fontColor: 'white'
+        property var currentWeek
     }
     Item{
         id: xApp
@@ -35,6 +35,7 @@ Window {
             spacing: app.fs
             anchors.centerIn: parent
             WeekDateSel{
+                id: wd
                 width: xApp.width
                 anchors.horizontalCenter: parent.horizontalCenter
             }
@@ -54,6 +55,10 @@ Window {
 
 
     Component.onCompleted: {
+        if(!apps.currentWeek){
+            let nd=new Date(Date.now())
+            apps.currentWeek=wd.toMonday(nd)
+        }
         let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
         unik.sqliteInit(dataBaseFullPath)
         let sql='CREATE TABLE IF NOT EXISTS tabla2
