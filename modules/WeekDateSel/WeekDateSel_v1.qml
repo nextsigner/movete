@@ -14,33 +14,33 @@ Item {
         radius: 8
 
         // Texto informativo opcional para visualizar la fecha actual
-//        Column {
-//            anchors.centerIn: parent
-//            spacing: 10
+        Column {
+            anchors.centerIn: parent
+            spacing: 10
 
 
-//            Text {
-//                text: "Desliza hacia la izquierda o derecha"
-//                font.pixelSize: 14
-//                color: "#6c757d"
-//                horizontalAlignment: Text.AlignHCenter
-//                anchors.horizontalCenter: parent.horizontalCenter
-//            }
+            //            Text {
+            //                text: "Desliza hacia la izquierda o derecha"
+            //                font.pixelSize: 14
+            //                color: "#6c757d"
+            //                horizontalAlignment: Text.AlignHCenter
+            //                anchors.horizontalCenter: parent.horizontalCenter
+            //            }
 
-//            Text {
-//                text: {
-//                    if (!app.                             || isNaN(new Date(app.currentWeek).getTime())) {
-//                        return "Semana: No asignada"
-//                    }
-//                    let d = new Date(app.currentWeek)
-//                    return "Semana del " + d.toLocaleDateString()
-//                }
-//                font.pixelSize: 20
-//                color: "#212529"
-//                horizontalAlignment: Text.AlignHCenter
-//                anchors.horizontalCenter: parent.horizontalCenter
-//            }
-//        }
+            //            Text {
+            //                text: {
+            //                    if (!app.                             || isNaN(new Date(app.currentWeek).getTime())) {
+            //                        return "Semana: No asignada"
+            //                    }
+            //                    let d = new Date(app.currentWeek)
+            //                    return "Semana del " + d.toLocaleDateString()
+            //                }
+            //                font.pixelSize: 20
+            //                color: "#212529"
+            //                horizontalAlignment: Text.AlignHCenter
+            //                anchors.horizontalCenter: parent.horizontalCenter
+            //            }
+        }
 
 
 
