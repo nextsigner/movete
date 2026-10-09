@@ -37,7 +37,7 @@ Rectangle{
         let sql='SELECT json FROM registros WHERE fecha = "'+d+'/'+m+'/'+a+'";'
         let cons=unik.getSqlData(sql);
         if(cons.length){
-            txt1.text+=' L:'+cons[0][0]
+            txt1.text+=' L:'+cons[0].col[0]
         }
     }
 }
