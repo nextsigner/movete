@@ -17,7 +17,7 @@ Rectangle{
     //onAChanged: actualizar()
     Column{
         id: col
-        spacing: app.fs*0.25
+        //spacing: app.fs*0.25
         anchors.centerIn: parent
         Text{
             id: txt0
@@ -27,6 +27,7 @@ Rectangle{
 
         }
         Row{
+            anchors.horizontalCenter: parent.horizontalCenter
             Repeater{
                 id: repActividades
                 Rectangle{
@@ -51,6 +52,31 @@ Rectangle{
             font.pixelSize: app.fs*2
             color: apps.fontColor
         }*/
+    }
+    Rectangle{
+        width: app.fs
+        height: width
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                //let sql='DELETE from registros'
+                const fechaAEliminar = "9/10/2026";
+
+                // El string de la consulta SQL directa
+                let sql = `DELETE FROM registros WHERE fecha = '${fechaAEliminar}';`;
+                let ejecutado = unik.sqlQuery(sql)
+                if(ejecutado){
+                    actualizar()
+                }
+            }
+        }
+        Text{
+            text: "X"
+            font.pixelSize: parent.width*0.9
+            color: 'black'
+            anchors.centerIn: parent
+        }
+
     }
     function actualizar(){
         let sql='SELECT json FROM registros WHERE fecha = "'+d+'/'+m+'/'+a+'";'
