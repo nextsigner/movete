@@ -29,7 +29,7 @@ Item {
 
             Text {
                 text: {
-                    if (!app.currentWeek || isNaN(new Date(app.currentWeek).getTime())) {
+                    if (!app.                             || isNaN(new Date(app.currentWeek).getTime())) {
                         return "Semana: No asignada"
                     }
                     let d = new Date(app.currentWeek)
