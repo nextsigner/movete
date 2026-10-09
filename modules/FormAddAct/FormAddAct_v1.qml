@@ -64,10 +64,8 @@ Rectangle{
                     font.pixelSize: app.fs
                     color: 'white'
                 }
-                /*SpinBox {
+                SpinBox {
                     id: spSeries
-                    anchors.centerIn: parent
-
                     from: 1      // Valor mínimo
                     to: 50       // Valor máximo
                     value: 10    // Valor inicial (opcional)
@@ -77,7 +75,7 @@ Rectangle{
                     onValueChanged: {
                         console.log("El valor actual es:", enteroSpinBox.value)
                     }
-                }*/
+                }
 
             }
         }
