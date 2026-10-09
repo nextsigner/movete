@@ -35,7 +35,7 @@ Window {
             spacing: app.fs
             anchors.centerIn: parent
             WeekDateSel{
-                width: xApp.width
+                width: app.fs*20
                 height: app.fs*10
             }
             Row{
