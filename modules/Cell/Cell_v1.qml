@@ -54,7 +54,7 @@ Rectangle{
         }*/
     }
     Rectangle{
-        width: r.height-4
+        width: txt0.contentHeight-4
         height: width
         anchors.right: parent.right
         anchors.rightMargin: 2
@@ -66,7 +66,7 @@ Rectangle{
                 const fechaAEliminar = "9/10/2026";
 
                 // El string de la consulta SQL directa
-                let sql = `DELETE FROM registros WHERE fecha = '${fechaAEliminar}';`;
+                let sql = 'DELETE FROM registros WHERE fecha = "'+fechaAEliminar+'";'
                 let ejecutado = unik.sqlQuery(sql)
                 if(ejecutado){
                     actualizar()
