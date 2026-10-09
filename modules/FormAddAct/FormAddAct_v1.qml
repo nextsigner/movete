@@ -97,6 +97,22 @@ Rectangle {
                     stepSize: 1
                 }
             }
+            Row {
+                spacing: app.fs
+                Text {
+                    text: "Cantidad por serie: "
+                    font.pixelSize: app.fs
+                    color: 'white'
+                    anchors.verticalCenter: spSeries.verticalCenter
+                }
+                NsSpinBox {
+                    id: spSeriesCant
+                    from: 1
+                    to: 500
+                    value: 10
+                    stepSize: 1
+                }
+            }
         }
     }
 }

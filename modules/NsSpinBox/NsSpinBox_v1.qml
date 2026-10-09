@@ -8,9 +8,9 @@ SpinBox {
     // 1. Campo de texto interno (letra blanca)
     property int fs: 20
     contentItem: TextInput {
-        //width: r.wi
+        height: r.fs*2
         text: r.textFromValue(r.value, r.locale)
-        font.pixelSize: app.fs*2
+        font.pixelSize: r.fs
         color: "white"
         horizontalAlignment: Qt.AlignHCenter
         verticalAlignment: Qt.AlignVCenter
@@ -22,6 +22,7 @@ SpinBox {
     // 2. Fondo y borde general del SpinBox
     background: Rectangle {
         width: r.width
+        height: r.fs*2
         color: "transparent"
         border.color: "white"
         border.width: 1
@@ -31,12 +32,13 @@ SpinBox {
     // 3. Botón de incremento (+)
     up.indicator: Rectangle {
         x: r.mirrored ? 0 : parent.width - width
-        height: app.fs*4//parent.height
+        height: r.fs*2
         width: app.fs*4//height // Botón cuadrado
         color: r.up.pressed ? "#444444" : "transparent"
         border.color: "white"
         border.width: 1
         radius: 4
+        anchors.verticalCenter: parent.verticalCenter
         MouseArea{
             anchors.fill: parent
             onClicked: {
@@ -49,7 +51,7 @@ SpinBox {
         Text {
             text: "+"
             color: "white"
-            font.pixelSize: app.fs * 2//1.2
+            font.pixelSize: r.fs
             anchors.centerIn: parent
         }
     }
@@ -57,12 +59,13 @@ SpinBox {
     // 4. Botón de decremento (-)
     down.indicator: Rectangle {
         x: r.mirrored ? parent.width - width : 0
-        height: app.fs*4//parent.height
+        height: r.fs*2
         width: app.fs*4//height // Botón cuadrado
         color: r.down.pressed ? "#444444" : "transparent"
         border.color: "white"
         border.width: 1
         radius: 4
+        anchors.verticalCenter: parent.verticalCenter
         MouseArea{
             anchors.fill: parent
             onClicked: {
@@ -75,7 +78,7 @@ SpinBox {
         Text {
             text: "-"
             color: "white"
-            font.pixelSize: app.fs * 2//1.2
+            font.pixelSize: r.fs
             anchors.centerIn: parent
         }
     }
