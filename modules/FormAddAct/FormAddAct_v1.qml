@@ -66,14 +66,14 @@ Rectangle{
                 }
                 SpinBox {
                     id: spSeries
-                    from: 1      // Valor mínimo
-                    to: 50       // Valor máximo
+                    //from: 1      // Valor mínimo
+                    //to: 50       // Valor máximo
                     value: 10    // Valor inicial (opcional)
                     stepSize: 1  // Incremento por cada paso (por defecto es 1)
 
                     // Señal para detectar cuando cambia el valor
                     onValueChanged: {
-                        console.log("El valor actual es:", enteroSpinBox.value)
+                        console.log("El valor actual es:", spSeries.value)
                     }
                 }
 
