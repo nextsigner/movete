@@ -95,7 +95,7 @@ Window {
         console.log('Ejecutado: '+ejecutado)
     }
     Timer{
-        id: checkHoy
+        id: tCheckHoy
         running: true
         repeat: true
         interval: 1000
