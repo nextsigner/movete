@@ -89,17 +89,34 @@ Rectangle {
                 }
                 SpinBox {
                     id: spSeries
-                    color: 'red'
                     from: 1
                     to: 50
                     value: 10
                     stepSize: 1
-                    anchors.verticalCenter: spSeries.verticalCenter
-                    Rectangle{
-                        anchors.fill: parent
-                        color: 'transparent'
+
+                    // 1. Estilo para el campo de texto interno (letra blanca)
+                    contentItem: TextInput {
+                        text: spSeries.textFromValue(spSeries.value, spSeries.locale)
+
+                        font.pixelSize: app.fs
+                        color: "white"          // <-- Letra blanca
+                        selectionColor: "gray"
+                        selectedTextColor: "white"
+                        horizontalAlignment: Qt.AlignHCenter
+                        verticalAlignment: Qt.AlignVCenter
+
+                        // Mantiene sincronizado el valor al escribir manualmente
+                        readOnly: !spSeries.editable
+                        validator: spSeries.validator
+                        inputMethodHints: spSeries.inputMethodHints
+                    }
+
+                    // 2. Estilo para el fondo/borde del SpinBox
+                    background: Rectangle {
+                        color: "transparent"    // Fondo transparente (o el color que prefieras)
+                        border.color: "white"   // <-- Borde blanco
                         border.width: 1
-                        border.color: 'white'
+                        radius: 4               // Opcional: esquinas redondeadas
                     }
 
                     onValueChanged: {
