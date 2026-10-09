@@ -140,4 +140,7 @@ Rectangle{
 
         //}
     }
+    function showAddActForm(){
+        formAddAct.visible=true
+    }
 }

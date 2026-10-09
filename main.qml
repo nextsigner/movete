@@ -71,6 +71,40 @@ Window {
                 }
             }
         }
+        Rectangle{
+            id: btnAddAct
+            width: app.fs*4
+            height: r.altoBotones
+            border.width: 1
+            border.color: 'white'
+            color: '#333'
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: app.fs
+            anchors.right: parent.right
+            anchors.rightMargin: app.fs
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    //formAddAct.visible=true
+                    colDias.children[app.ciHoy].showAddActForm()
+                    return
+                    const fecha = '9/10/2026';
+                    const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
+                    let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
+                    let ejecutado = unik.sqlQuery(sql)
+                    //txt0.text+='e: '+ejecutado
+                    if(ejecutado){
+                        actualizar()
+                    }
+                }
+            }
+            Text{
+                text: "<b>+</b>"
+                font.pixelSize: parent.width*0.8
+                color: apps.fontColor
+                anchors.centerIn: parent
+            }
+        }
     }
 
 
