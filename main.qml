@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtCore
 import unik.Unik 1.0
 
-//import WeekDateSel 1.0
+import WeekDateSel 1.0
 import Cell 1.0
 
 Window {
