@@ -3,6 +3,8 @@ import QtQuick.Controls
 import QtCore
 import unik.Unik 1.0
 
+import Cell 1.0
+
 Window {
     id: app
     width: Qt.platform.os==='android'?640:608
