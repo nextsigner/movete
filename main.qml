@@ -100,16 +100,15 @@ Window {
         console.log('Ejecutado: '+ejecutado)
 
 
-        const fecha = '9/10/2026';
-        const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
+//        const fecha = '9/10/2026';
+//        const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
 
-        // Ojo: Si el json tiene comillas dobles, asegúrate de escapar o usar comillas simples adecuadamente
-        sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
-        ejecutado = unik.sqlQuery(sql)
+//        // Ojo: Si el json tiene comillas dobles, asegúrate de escapar o usar comillas simples adecuadamente
+//        sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
+//        ejecutado = unik.sqlQuery(sql)
         app.color=ejecutado?'blue':'red'
 
-        /*Q_INVOKABLE bool sqlQuery(QString query);
-    Q_INVOKABLE QList<QObject *> getSqlData(QString query);*/
+
     }
     Shortcut{
         sequence: 'Esc'
@@ -127,5 +126,11 @@ Window {
             }
         }
     }
-
+    function insertarRegistro(fecha, jsonData){
+        //const fecha = '9/10/2026';
+        //const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
+        // Ojo: Si el json tiene comillas dobles, asegúrate de escapar o usar comillas simples adecuadamente
+        let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
+        return = unik.sqlQuery(sql)
+    }
 }

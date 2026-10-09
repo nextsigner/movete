@@ -12,6 +12,9 @@ Rectangle{
     property int d: -1
     property int m: -1
     property int a: -1
+    onDChanged: actualizar()
+    onMChanged: actualizar()
+    onAChanged: actualizar()
     Text{
         id: txt0
         text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a//+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
@@ -20,6 +23,8 @@ Rectangle{
         anchors.centerIn: parent
     }
     function actualizar(){
-        let sql=''
+        let sql='SELECT json FROM registros WHERE fecha = ""9/10/2026";'
+        let cons=unik.getSqlData(sql);
+        txt0.text+=' L:'+cons.length
     }
 }
