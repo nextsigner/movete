@@ -14,9 +14,12 @@ Rectangle{
     property int a: -1
     Text{
         id: txt0
-        text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
+        text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a//+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
         font.pixelSize: app.fs*2
         color: apps.fontColor
         anchors.centerIn: parent
+    }
+    function actualizar(){
+        let sql=''
     }
 }

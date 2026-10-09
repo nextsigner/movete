@@ -74,6 +74,13 @@ Window {
 
 
 
+    Timer{
+        id: tCheckHoy
+        running: true
+        repeat: true
+        interval: 1000
+        onTriggered: checkHoy()
+    }
     Component.onCompleted: {
         if(!apps.currentWeek){
             let nd=new Date(Date.now())
@@ -82,26 +89,28 @@ Window {
         app.hoy=new Date(Date.now())
         let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
         unik.sqliteInit(dataBaseFullPath)
-        let sql='CREATE TABLE IF NOT EXISTS tabla2
+        let sql='CREATE TABLE IF NOT EXISTS registros
                             (
                                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                nombre TEXT NOT NULL,
-                                apellido TEXT NOT NULL,
-                                edad NUMERIC NOT NULL,
-                                promedio DECIMAL(2,2) NOT NULL
+                                fecha TEXT NOT NULL,
+                                json TEXT NOT NULL
                             )'
         let ejecutado = unik.sqlQuery(sql)
         status.text='Ejecutado: '+ejecutado
         console.log('Ejecutado: '+ejecutado)
-    }
-    Timer{
-        id: tCheckHoy
-        running: true
-        repeat: true
-        interval: 1000
-        onTriggered: checkHoy()
-    }
 
+
+        const fecha = '9/10/2026';
+        const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
+
+        // Ojo: Si el json tiene comillas dobles, asegúrate de escapar o usar comillas simples adecuadamente
+        sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
+        ejecutado = unik.sqlQuery(sql)
+        app.color=ejecutado?'blue':'red'
+
+        /*Q_INVOKABLE bool sqlQuery(QString query);
+    Q_INVOKABLE QList<QObject *> getSqlData(QString query);*/
+    }
     Shortcut{
         sequence: 'Esc'
         onActivated: Qt.quit()
