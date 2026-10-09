@@ -28,9 +28,10 @@ Rectangle{
         }
         Row{
             anchors.horizontalCenter: parent.horizontalCenter
+            visible: app.ciHoy===r.ni
             Rectangle{
                 id: btnAdd
-                width: app.fs*6
+                width: app.fs*4
                 height: width
                 border.width: 1
                 border.color: 'white'
@@ -46,6 +47,12 @@ Rectangle{
                             actualizar()
                         }
                     }
+                }
+                Text{
+                    text: "<b>+</b>"
+                    font.pixelSize: parent.width*0.8
+                    color: apps.fontColor
+                    anchors.centerIn: parent
                 }
             }
             Repeater{
