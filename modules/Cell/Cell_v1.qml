@@ -125,6 +125,12 @@ Rectangle{
         }
 
     }
+    Timer{
+        running: app.ciHoy===r.ni && !flowActs.visible
+        repeat: false
+        interval: 500
+        onTriggered: actualizar()
+    }
     function actualizar(){
         let sql='SELECT id, json FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'";'
         let cons=unik.getSqlData(sql);
