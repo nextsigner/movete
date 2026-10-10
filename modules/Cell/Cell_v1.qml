@@ -35,13 +35,13 @@ Rectangle{
             id: flowActs
             spacing: app.fs*0.25
             width: r.width-app.fs*0.5
-            anchors.left: parent.left
+            anchors.horizontalCenter: parent.horizontalCenter
             visible: app.ciHoy===r.ni
             Repeater{
                 id: repActividades
                 Rectangle{
                     id: xCell
-                    width: r.altoBotones
+                    width: r.altoBotones-1
                     height: r.altoBotones
                     border.width: 1
                     border.color: 'white'
@@ -54,12 +54,26 @@ Rectangle{
                         anchors.centerIn: parent
                     }
                     Rectangle{
-                        width: app.fs
+                        width: app.fs*3
                         height: width
                         radius: width*0.5
                         color: apps.backgroundColor
                         Text{
                             text: ''+xCell.j.data.series
+                            font.pixelSize: parent.width*0.45
+                            color: apps.fontColor
+                            anchors.centerIn: parent
+                        }
+                    }
+                    Rectangle{
+                        width: app.fs*3
+                        height: width
+                        radius: width*0.5
+                        color: apps.backgroundColor
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        Text{
+                            text: ''+xCell.j.data.cantidad
                             font.pixelSize: parent.width*0.45
                             color: apps.fontColor
                             anchors.centerIn: parent
