@@ -74,7 +74,7 @@ Window {
         Rectangle{
             id: btnAddAct
             width: app.fs*4
-            height: r.altoBotones
+            height: width
             border.width: 1
             border.color: 'white'
             color: '#333'
@@ -86,7 +86,7 @@ Window {
                 anchors.fill: parent
                 onClicked: {
                     //formAddAct.visible=true
-                    colDias.children[app.ciHoy].showAddActForm()
+                    colDias.children[app.ciHoy].visible=false//showAddActForm()
                     return
                     const fecha = '9/10/2026';
                     const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
