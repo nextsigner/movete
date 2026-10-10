@@ -2,33 +2,35 @@ import QtQuick
 
 Rectangle {
     id: r
-    height: txt1.contentHeight + txt0.contentHeight + app.fs * 3
+    height: txt1.contentHeight + app.fs
     color: apps.backgroundColor
     border.color: apps.fontColor
     border.width: 1
     radius: 8
 
     // Función auxiliar para obtener el Lunes de cualquier fecha dada
-    function toMonday(dateObj) {
-        let d = new Date(dateObj)
-        let day = d.getDay()
-        // Si es domingo (0), retrocedemos 6 días; de lo contrario, restamos el día actual y sumamos 1 (lunes)
-        let diff = d.getDate() - day + (day === 0 ? -6 : 1)
-        return new Date(d.setDate(diff))
-    }
+
+//    function toMonday(dateObj) {
+//        let d = new Date(dateObj)
+//        let day = d.getDay()
+//        // Si es domingo (0), retrocedemos 6 días; de lo contrario, restamos el día actual y sumamos 1 (lunes)
+//        let diff = d.getDate() - day + (day === 0 ? -6 : 1)
+//        return new Date(d.setDate(diff))
+//    }
 
     // Texto informativo opcional para visualizar la fecha actual
     Column {
         anchors.centerIn: parent
         spacing: app.fs
-        Text {
-            id: txt0
-            text: "Desliza hacia la izquierda o derecha"
-            font.pixelSize: app.fs
-            color: apps.fontColor
-            horizontalAlignment: Text.AlignHCenter
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
+
+//        Text {
+//            id: txt0
+//            text: "Desliza hacia la izquierda o derecha"
+//            font.pixelSize: app.fs
+//            color: apps.fontColor
+//            horizontalAlignment: Text.AlignHCenter
+//            anchors.horizontalCenter: parent.horizontalCenter
+//        }
 
 //        Text {
 //            id: txt1
@@ -68,21 +70,30 @@ Rectangle {
                     let monday = r.toMonday(date)
                     let year = monday.getFullYear()
                     let month = monday.getMonth() // 0 = Enero, 9 = Octubre
-                    let day = monday.getDate()
 
-                    // --- 1. Calcular el número de Lunes del mes (1°, 2°, 3°, 4° o 5°) ---
-                    let mondayCount = 0
-                    let tempDate = new Date(year, month, 1) // Empezamos el día 1 del mes
+                    // --- 1. Encontrar el primer Lunes del mes actual ---
+                    let firstDayOfMonth = new Date(year, month, 1)
+                    let dayOfWeek = firstDayOfMonth.getDay() // 0: Dom, 1: Lun, ..., 6: Sáb
 
-                    // Recorremos los días del mes hasta llegar al lunes actual
-                    while (tempDate.getDate() <= day) {
-                        if (tempDate.getDay() === 1) { // 1 es Lunes
-                            mondayCount++
-                        }
-                        tempDate.setDate(tempDate.getDate() + 1)
+                    // Días que faltan para llegar al primer lunes
+                    let offsetToFirstMonday = (dayOfWeek === 1) ? 0 : (dayOfWeek === 0 ? 1 : (9 - dayOfWeek))
+                    let firstMondayOfMonth = new Date(year, month, 1 + offsetToFirstMonday)
+
+                    // --- 2. Calcular la semana del mes basada en el primer lunes ---
+                    // Diferencia en milisegundos entre el lunes actual y el primer lunes del mes
+                    let diffTime = monday.getTime() - firstMondayOfMonth.getTime()
+                    let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
+
+                    let weekOfMonth = 1
+                    if (diffDays >= 0) {
+                        // Cada bloque de 7 días suma una semana
+                        weekOfMonth = Math.floor(diffDays / 7) + 1
+                    } else {
+                        // Si el lunes está antes del primer lunes del mes (pertenece al cierre del mes anterior)
+                        weekOfMonth = 1 // O puedes manejarlo como semana previa
                     }
 
-                    // --- 2. Calcular la semana del año basada en el primer lunes del año ---
+                    // --- 3. Semana del año a partir del primer lunes del año ---
                     let firstDayOfYear = new Date(year, 0, 1)
                     let yearDayOfWeek = firstDayOfYear.getDay()
                     let offsetYearMonday = (yearDayOfWeek === 1) ? 0 : (yearDayOfWeek === 0 ? 1 : (9 - yearDayOfWeek))
@@ -92,7 +103,7 @@ Rectangle {
                     let diffYearDays = Math.floor(diffYearTime / (1000 * 60 * 60 * 24))
                     let weekOfYear = Math.max(1, Math.floor(diffYearDays / 7) + 1)
 
-                    return "Semana " + weekOfYear + " del año — " + mondayCount + "° Lunes del mes"
+                    return "Semana " + weekOfYear + " del año — Semana " + weekOfMonth + " del mes"
                 } catch (e) {
                     console.log("Error en cálculo de semanas:", e)
                     return "Semana: Error de cálculo"
