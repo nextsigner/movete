@@ -21,15 +21,23 @@ Rectangle {
     Column {
         anchors.centerIn: parent
         spacing: app.fs
-        Text {
-            id: txt0
-            text: "Desliza hacia la izquierda o derecha"
-            font.pixelSize: app.fs
-            color: apps.fontColor
-            horizontalAlignment: Text.AlignHCenter
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
-
+//        Text {
+//            id: txt1
+//            width: r.width - app.fs
+//            wrapMode: Text.WordWrap
+//            text: {
+//                if (!apps.currentWeek || isNaN(new Date(apps.currentWeek).getTime())) {
+//                    return "Semana: No asignada"
+//                }
+//                // Muestra siempre la fecha normalizada al Lunes de esa semana
+//                let d = r.toMonday(new Date(apps.currentWeek))
+//                return "Semana del " + d.toLocaleDateString()
+//            }
+//            font.pixelSize: app.fs * 2
+//            color: apps.fontColor
+//            horizontalAlignment: Text.AlignHCenter
+//            anchors.horizontalCenter: parent.horizontalCenter
+//        }
         Text {
             id: txt1
             width: r.width - app.fs
@@ -38,9 +46,24 @@ Rectangle {
                 if (!apps.currentWeek || isNaN(new Date(apps.currentWeek).getTime())) {
                     return "Semana: No asignada"
                 }
-                // Muestra siempre la fecha normalizada al Lunes de esa semana
-                let d = r.toMonday(new Date(apps.currentWeek))
-                return "Semana del " + d.toLocaleDateString()
+
+                let date = new Date(apps.currentWeek)
+
+                // 1. Cálculo del número de semana del año (Estándar ISO 8601)
+                let target = new Date(date.valueOf())
+                let dayNr = (date.getDay() + 6) % 7 // Lunes = 0, Domingo = 6
+                target.setDate(target.getDate() - dayNr + 3) // Jueves de esta semana
+                let firstThursday = new Date(target.getFullYear(), 0, 4)
+                let firstDayNr = (firstThursday.getDay() + 6) % 7
+                firstThursday.setDate(firstThursday.getDate() - firstDayNr + 3)
+                let weekOfYear = Math.floor(1 + Math.round((target.getTime() - firstThursday.getTime()) / 86400000) / 7)
+
+                // 2. Cálculo del número de semana del mes (de 1 a 4 o 5 según el mes)
+                // Opción A: Bloques fijos de 7 días (Día del mes dividido 7, redondeado hacia arriba, limitado a máx 4 o 5)
+                let dayOfMonth = date.getDate()
+                let weekOfMonth = Math.min(4, Math.ceil(dayOfMonth / 7))
+
+                return "Semana " + weekOfYear + " del año (Semana " + weekOfMonth + " del mes)"
             }
             font.pixelSize: app.fs * 2
             color: apps.fontColor

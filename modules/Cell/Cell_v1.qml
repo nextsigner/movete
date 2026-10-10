@@ -62,13 +62,13 @@ Rectangle{
                         color: apps.backgroundColor
                         Text{
                             text: ''+xCell.j.data.series
-                            font.pixelSize: parent.width*0.45
+                            font.pixelSize: parent.width*0.6
                             color: apps.fontColor
                             anchors.centerIn: parent
                         }
                     }
                     Rectangle{
-                        width: app.fs*3
+                        width: app.fs*2
                         height: width
                         border.width: 2
                         border.color: apps.fontColor
@@ -78,7 +78,7 @@ Rectangle{
                         anchors.bottom: parent.bottom
                         Text{
                             text: ''+xCell.j.data.cantidad
-                            font.pixelSize: parent.width*0.45
+                            font.pixelSize: parent.width*0.6
                             color: apps.fontColor
                             anchors.centerIn: parent
                         }
@@ -106,7 +106,7 @@ Rectangle{
         height: width
         anchors.right: parent.right
         anchors.rightMargin: 2
-        anchors.verticalCenter: parent.verticalCenter
+        //anchors.verticalCenter: parent.verticalCenter
         MouseArea{
             anchors.fill: parent
             onClicked: {
