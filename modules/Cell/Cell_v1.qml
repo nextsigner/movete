@@ -13,7 +13,7 @@ Rectangle{
     property int d: -1
     property int m: -1
     property int a: -1
-    property int altoBotones: (r.width-(flowActs.spacing*(cantCols-1)))/cantCols
+    property int altoBotones: ((r.width-app.fs*0.5)-(flowActs.spacing*(cantCols-1)))/cantCols
     property int cantCols: 4
     onDChanged: actualizar()
     //onMChanged: actualizar()
@@ -41,7 +41,7 @@ Rectangle{
                 id: repActividades
                 Rectangle{
                     id: xCell
-                    width: r.altoBotones-1
+                    width: r.altoBotones
                     height: r.altoBotones
                     border.width: 1
                     border.color: 'white'
@@ -54,8 +54,10 @@ Rectangle{
                         anchors.centerIn: parent
                     }
                     Rectangle{
-                        width: app.fs*3
+                        width: app.fs*2
                         height: width
+                        border.width: 2
+                        border.color: apps.fontColor
                         radius: width*0.5
                         color: apps.backgroundColor
                         Text{
@@ -68,6 +70,8 @@ Rectangle{
                     Rectangle{
                         width: app.fs*3
                         height: width
+                        border.width: 2
+                        border.color: apps.fontColor
                         radius: width*0.5
                         color: apps.backgroundColor
                         anchors.right: parent.right
