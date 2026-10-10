@@ -86,7 +86,7 @@ Window {
                 anchors.fill: parent
                 onClicked: {
                     //formAddAct.visible=true
-                    colDias.children[app.ciHoy].visible=false//showAddActForm()
+                    colDias.children[app.ciHoy].showAddActForm()
                     return
                     const fecha = '9/10/2026';
                     const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
