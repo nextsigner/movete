@@ -42,6 +42,7 @@ Rectangle {
             id: txt1
             width: r.width - app.fs
             wrapMode: Text.WordWrap
+            color: apps.fontColor
             text: {
                 if (!apps.currentWeek || isNaN(new Date(apps.currentWeek).getTime())) {
                     return "Semana: No asignada"
