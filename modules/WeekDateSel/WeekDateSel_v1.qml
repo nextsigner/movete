@@ -53,37 +53,57 @@ Rectangle {
             width: r.width - app.fs
             wrapMode: Text.WordWrap
 
-            // Usamos una función separada o lógica más limpia
             text: {
                 try {
                     if (!apps.currentWeek) {
-                        return "Semana: No asignada (vacía)"
+                        return "Semana: No asignada"
                     }
 
                     let date = new Date(apps.currentWeek)
                     if (isNaN(date.getTime())) {
-                        return "Semana: Fecha inválida (" + apps.currentWeek + ")"
+                        return "Semana: Fecha inválida"
                     }
 
                     // Normalizamos al Lunes de esa semana usando tu función toMonday
-                    let d = r.toMonday(date)
+                    let monday = r.toMonday(date)
+                    let year = monday.getFullYear()
+                    let month = monday.getMonth() // 0 = Enero, 9 = Octubre
 
-                    // 1. Cálculo del número de semana del año (ISO-8601)
-                    let target = new Date(d.valueOf())
-                    let dayNr = (d.getDay() + 6) % 7
-                    target.setDate(target.getDate() - dayNr + 3)
-                    let firstThursday = new Date(target.getFullYear(), 0, 4)
-                    let firstDayNr = (firstThursday.getDay() + 6) % 7
-                    firstThursday.setDate(firstThursday.getDate() - firstDayNr + 3)
-                    let weekOfYear = Math.floor(1 + Math.round((target.getTime() - firstThursday.getTime()) / 86400000) / 7)
+                    // --- 1. Encontrar el primer Lunes del mes actual ---
+                    let firstDayOfMonth = new Date(year, month, 1)
+                    let dayOfWeek = firstDayOfMonth.getDay() // 0: Dom, 1: Lun, ..., 6: Sáb
 
-                    // 2. Cálculo de la semana del mes (de 1 a 4)
-                    let dayOfMonth = d.getDate()
-                    let weekOfMonth = Math.min(4, Math.ceil(dayOfMonth / 7))
+                    // Días que faltan para llegar al primer lunes
+                    let offsetToFirstMonday = (dayOfWeek === 1) ? 0 : (dayOfWeek === 0 ? 1 : (9 - dayOfWeek))
+                    let firstMondayOfMonth = new Date(year, month, 1 + offsetToFirstMonday)
+
+                    // --- 2. Calcular la semana del mes basada en el primer lunes ---
+                    // Diferencia en milisegundos entre el lunes actual y el primer lunes del mes
+                    let diffTime = monday.getTime() - firstMondayOfMonth.getTime()
+                    let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24))
+
+                    let weekOfMonth = 1
+                    if (diffDays >= 0) {
+                        // Cada bloque de 7 días suma una semana
+                        weekOfMonth = Math.floor(diffDays / 7) + 1
+                    } else {
+                        // Si el lunes está antes del primer lunes del mes (pertenece al cierre del mes anterior)
+                        weekOfMonth = 1 // O puedes manejarlo como semana previa
+                    }
+
+                    // --- 3. Semana del año a partir del primer lunes del año ---
+                    let firstDayOfYear = new Date(year, 0, 1)
+                    let yearDayOfWeek = firstDayOfYear.getDay()
+                    let offsetYearMonday = (yearDayOfWeek === 1) ? 0 : (yearDayOfWeek === 0 ? 1 : (9 - yearDayOfWeek))
+                    let firstMondayOfYear = new Date(year, 0, 1 + offsetYearMonday)
+
+                    let diffYearTime = monday.getTime() - firstMondayOfYear.getTime()
+                    let diffYearDays = Math.floor(diffYearTime / (1000 * 60 * 60 * 24))
+                    let weekOfYear = Math.max(1, Math.floor(diffYearDays / 7) + 1)
 
                     return "Semana " + weekOfYear + " del año — Semana " + weekOfMonth + " del mes"
                 } catch (e) {
-                    console.log("Error calculando la semana:", e)
+                    console.log("Error en cálculo de semanas:", e)
                     return "Semana: Error de cálculo"
                 }
             }
