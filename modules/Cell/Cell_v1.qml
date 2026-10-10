@@ -126,7 +126,7 @@ Rectangle{
 
     }
     Timer{
-        running: app.ciHoy===r.ni && !flowActs.visible
+        running: app.ciHoy===r.ni //&& !flowActs.visible
         repeat: true
         interval: 1000
         onTriggered: {
