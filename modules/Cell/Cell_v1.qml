@@ -127,11 +127,11 @@ Rectangle{
     }
     Timer{
         running: app.ciHoy===r.ni //&& !flowActs.visible
-        repeat: true
+        repeat: false
         interval: 1000
         onTriggered: {
-            //actualizar()
-            r.opacity-=0.1
+            actualizar()
+            //r.opacity-=0.1
         }
     }
     function actualizar(){
