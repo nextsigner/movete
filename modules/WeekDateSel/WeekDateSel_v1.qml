@@ -21,23 +21,32 @@ Rectangle {
     Column {
         anchors.centerIn: parent
         spacing: app.fs
-        //        Text {
-        //            id: txt1
-        //            width: r.width - app.fs
-        //            wrapMode: Text.WordWrap
-        //            text: {
-        //                if (!apps.currentWeek || isNaN(new Date(apps.currentWeek).getTime())) {
-        //                    return "Semana: No asignada"
-        //                }
-        //                // Muestra siempre la fecha normalizada al Lunes de esa semana
-        //                let d = r.toMonday(new Date(apps.currentWeek))
-        //                return "Semana del " + d.toLocaleDateString()
-        //            }
-        //            font.pixelSize: app.fs * 2
-        //            color: apps.fontColor
-        //            horizontalAlignment: Text.AlignHCenter
-        //            anchors.horizontalCenter: parent.horizontalCenter
-        //        }
+        Text {
+            id: txt0
+            text: "Desliza hacia la izquierda o derecha"
+            font.pixelSize: app.fs
+            color: apps.fontColor
+            horizontalAlignment: Text.AlignHCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+//        Text {
+//            id: txt1
+//            width: r.width - app.fs
+//            wrapMode: Text.WordWrap
+//            text: {
+//                if (!apps.currentWeek || isNaN(new Date(apps.currentWeek).getTime())) {
+//                    return "Semana: No asignada"
+//                }
+//                // Muestra siempre la fecha normalizada al Lunes de esa semana
+//                let d = r.toMonday(new Date(apps.currentWeek))
+//                return "Semana del " + d.toLocaleDateString()
+//            }
+//            font.pixelSize: app.fs * 2
+//            color: apps.fontColor
+//            horizontalAlignment: Text.AlignHCenter
+//            anchors.horizontalCenter: parent.horizontalCenter
+//        }
 
         Text {
             id: txt1
@@ -95,34 +104,34 @@ Rectangle {
         property real threshold: 50 // Umbral mínimo en píxeles para validar el gesto
 
         onPressed: (mouse) => {
-                       startX = mouse.x
-                   }
+            startX = mouse.x
+        }
 
         onReleased: (mouse) => {
-                        let delta = mouse.x - startX
+            let delta = mouse.x - startX
 
-                        // Validar si el arrastre supera el umbral establecido
-                        if (Math.abs(delta) > threshold) {
-                            // Obtener fecha actual o usar la fecha de hoy si apps.currentWeek está vacía
-                            let currentDate = apps.currentWeek ? new Date(apps.currentWeek) : new Date()
-                            if (isNaN(currentDate.getTime())) {
-                                currentDate = new Date()
-                            }
+            // Validar si el arrastre supera el umbral establecido
+            if (Math.abs(delta) > threshold) {
+                // Obtener fecha actual o usar la fecha de hoy si apps.currentWeek está vacía
+                let currentDate = apps.currentWeek ? new Date(apps.currentWeek) : new Date()
+                if (isNaN(currentDate.getTime())) {
+                    currentDate = new Date()
+                }
 
-                            // Asegurar que partimos desde el Lunes actual
-                            currentDate = r.toMonday(currentDate)
+                // Asegurar que partimos desde el Lunes actual
+                currentDate = r.toMonday(currentDate)
 
-                            if (delta > 0) {
-                                // Deslizamiento hacia la DERECHA -> Lunes de la semana anterior (-7 días)
-                                currentDate.setDate(currentDate.getDate() - 7)
-                            } else {
-                                // Deslizamiento hacia la IZQUIERDA -> Lunes de la semana siguiente (+7 días)
-                                currentDate.setDate(currentDate.getDate() + 7)
-                            }
+                if (delta > 0) {
+                    // Deslizamiento hacia la DERECHA -> Lunes de la semana anterior (-7 días)
+                    currentDate.setDate(currentDate.getDate() - 7)
+                } else {
+                    // Deslizamiento hacia la IZQUIERDA -> Lunes de la semana siguiente (+7 días)
+                    currentDate.setDate(currentDate.getDate() + 7)
+                }
 
-                            // Actualizar la propiedad en la ventana principal con el nuevo Lunes
-                            apps.currentWeek = currentDate
-                        }
-                    }
+                // Actualizar la propiedad en la ventana principal con el nuevo Lunes
+                apps.currentWeek = currentDate
+            }
+        }
     }
 }
