@@ -13,7 +13,8 @@ Rectangle{
     property int d: -1
     property int m: -1
     property int a: -1
-    property int altoBotones: app.fs*6
+    property int altoBotones: (r.width-(flowActs.spacing*(cantCols-1)))/cantCols
+    property int cantCols: 4
     onDChanged: actualizar()
     //onMChanged: actualizar()
     //onAChanged: actualizar()
@@ -39,14 +40,14 @@ Rectangle{
                 id: repActividades
                 Rectangle{
                     id: xCell
-                    width: app.fs*3//r.width/repActividades.model.length
+                    width: r.altoBotones
                     height: r.altoBotones
                     border.width: 1
                     border.color: 'white'
                     color: 'transparent'
                     property var j: JSON.parse(modelData)
                     Image{
-                        width: parent.height*0.9
+                        width: parent.width
                         height: width
                         source: 'file:./imgs/'+xCell.j.data.actividad+'.jpeg'
                         anchors.centerIn: parent
