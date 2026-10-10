@@ -10,13 +10,13 @@ Rectangle {
 
     // Función auxiliar para obtener el Lunes de cualquier fecha dada
 
-//    function toMonday(dateObj) {
-//        let d = new Date(dateObj)
-//        let day = d.getDay()
-//        // Si es domingo (0), retrocedemos 6 días; de lo contrario, restamos el día actual y sumamos 1 (lunes)
-//        let diff = d.getDate() - day + (day === 0 ? -6 : 1)
-//        return new Date(d.setDate(diff))
-//    }
+    function toMonday(dateObj) {
+        let d = new Date(dateObj)
+        let day = d.getDay()
+        // Si es domingo (0), retrocedemos 6 días; de lo contrario, restamos el día actual y sumamos 1 (lunes)
+        let diff = d.getDate() - day + (day === 0 ? -6 : 1)
+        return new Date(d.setDate(diff))
+    }
 
     // Texto informativo opcional para visualizar la fecha actual
     Column {
