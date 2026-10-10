@@ -21,19 +21,20 @@ Rectangle{
     FormAddAct{id: formAddAct;parent: visible?xApp:r}
     Column{
         id: col
-        //spacing: app.fs*0.25
+        spacing: app.fs*0.25
         anchors.centerIn: parent
         Text{
             id: txt0
             text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a//+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
             font.pixelSize: app.ciHoy===r.ni?app.fs*2:app.fs
             color: apps.fontColor
+            anchors.horizontalCenter: parent.horizontalCenter
 
         }
         Flow{
             id: flowActs
             spacing: app.fs*0.25
-            width: r.width
+            width: r.width-app.fs*0.5
             anchors.left: parent.left
             visible: app.ciHoy===r.ni
             Repeater{
@@ -51,6 +52,18 @@ Rectangle{
                         height: width
                         source: 'file:./imgs/'+xCell.j.data.actividad+'.jpeg'
                         anchors.centerIn: parent
+                    }
+                    Rectangle{
+                        width: app.fs
+                        height: width
+                        radius: width*0.5
+                        color: apps.backgroundColor
+                        Text{
+                            text: ''+xCell.j.data.series
+                            font.pixelSize: parent.width*0.45
+                            color: apps.fontColor
+                            anchors.centerIn: parent
+                        }
                     }
                     Text{
                         text: JSON.parse(modelData).data.actividad
