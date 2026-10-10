@@ -25,52 +25,25 @@ Rectangle{
         Text{
             id: txt0
             text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a//+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
-            font.pixelSize: app.fs*2
+            font.pixelSize: app.ciHoy===r.ni?app.fs*2:app.fs
             color: apps.fontColor
 
         }
-        Row{
-            //anchors.horizontalCenter: parent.horizontalCenter
+        Flow{
+            id: flowActs
+            spacing: app.fs*0.25
+            width: r.width
             anchors.left: parent.left
             visible: app.ciHoy===r.ni
-            Rectangle{
-                id: btnAdd
-                width: app.fs*4
-                height: r.altoBotones
-                border.width: 1
-                border.color: 'white'
-                color: '#333'
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: {
-                        formAddAct.visible=true
-                        return
-                        const fecha = '9/10/2026';
-                        const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
-                        let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
-                        let ejecutado = unik.sqlQuery(sql)
-                        //txt0.text+='e: '+ejecutado
-                        if(ejecutado){
-                            actualizar()
-                        }
-                    }
-                }
-                Text{
-                    text: "<b>+</b>"
-                    font.pixelSize: parent.width*0.8
-                    color: apps.fontColor
-                    anchors.centerIn: parent
-                }
-            }
             Repeater{
                 id: repActividades
                 Rectangle{
                     id: xCell
-                    width: (r.width-btnAdd.width)/repActividades.model.length
+                    width: app.fs*3//r.width/repActividades.model.length
                     height: r.altoBotones
                     border.width: 1
                     border.color: 'white'
-                    color: '#ff8833'
+                    color: 'transparent'
                     property var j: JSON.parse(modelData)
                     Image{
                         width: parent.height*0.9
