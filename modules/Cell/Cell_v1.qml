@@ -30,7 +30,7 @@ Rectangle{
         anchors.fill: parent
         onClicked: {
             app.dateSelected=new Date(r.a, r.m-1, r.d)
-            log.text+='Seleccionado: '+app.dateSelected.toString()
+            //log.text+='Seleccionado: '+app.dateSelected.toString()
         }
     }
     Column{
@@ -39,7 +39,7 @@ Rectangle{
         anchors.centerIn: parent
         Text{
             id: txt0
-            text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a//+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
+            text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a+' S: '+r.selected//+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
             font.pixelSize: app.ciHoy===r.ni?app.fs*2:app.fs
             color: apps.fontColor
             anchors.horizontalCenter: parent.horizontalCenter
