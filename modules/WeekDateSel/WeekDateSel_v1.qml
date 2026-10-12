@@ -174,7 +174,7 @@ Rectangle {
         height: width
         radius: width*0.5
         anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.bottom: parent.top
         Text{
             id: txtCW
             text: 'S'+r.cw
