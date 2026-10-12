@@ -7,6 +7,10 @@ Rectangle {
     anchors.fill: parent
     visible: false
 
+    property int d: -1
+    property int m: -1
+    property int a: -1
+
     // Guardamos la actividad seleccionada y su índice para evitar recorrer el Flow
     property string cAct: ''
     property int selectedIndex: -1
@@ -135,7 +139,7 @@ Rectangle {
                     text: 'Agregar'
                     onClicked: {
                         let j={}
-                        const fecha = '9/10/2026';
+                        const fecha = ''+r.d+'/'+r.m+'/'+r.a;//'9/10/2026';
                         const jsonData = JSON.stringify({ actividad: r.cAct, series: spSeries.value, cantidad: spSeriesCant.value });
                         let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
                         let ejecutado = unik.sqlQuery(sql)
