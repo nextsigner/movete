@@ -118,10 +118,11 @@ Window {
         anchors.fill: parent
         visible: false
         Flickable{
-            width: parent.width
-            height: parent.height
+            width: parent.width-app.fs*4
+            height: parent.height-app.fs*6
             contentWidth: width
             contentHeight: log.contentHeight
+            anchors.centerIn: parent
             Text{
                 id: log
                 width: xLog.width-app.fs
@@ -135,6 +136,7 @@ Window {
             Rectangle{
                 width: app.fs*2
                 height: width
+                anchors.right: parent.right
                 MouseArea{
                     anchors.fill: parent
                     onClicked: xLog.visible=false
