@@ -161,6 +161,7 @@ Rectangle {
                 }
 
                 // Actualizar la propiedad en la ventana principal con el nuevo Lunes
+                app.ciHoy=-1
                 apps.currentWeek = currentDate
                 app.dateSelected=apps.currentWeek
             }
