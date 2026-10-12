@@ -138,7 +138,9 @@ Rectangle{
             //r.opacity-=0.1
         }
     }
+
     function actualizar(){
+        if(!app.sqlOpen)return
         let sql='SELECT id, json FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'";'
         let cons=unik.getSqlData(sql);
         //if(cons.length>0){
@@ -151,8 +153,6 @@ Rectangle{
             a.push(JSON.stringify(json))
         }
         repActividades.model=a
-
-        //}
     }
     function showAddActForm(){
         formAddAct.visible=true

@@ -16,6 +16,7 @@ Window {
     property int fs: width*0.035
     property date hoy
     property int ciHoy: -1
+    property bool sqlOpen: false
     Settings{
         id: apps
         property color backgroundColor: 'black'
@@ -220,6 +221,16 @@ Window {
                 app.ciHoy=i
             }
         }
+        if(app.sqlOpen){
+            let sql='CREATE TABLE IF NOT EXISTS registros
+                                (
+                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    fecha TEXT NOT NULL,
+                                    json TEXT NOT NULL
+                                )'
+            app.sqlOpen = unik.sqlQuery(sql)
+        }
+
     }
     function insertarRegistro(fecha, jsonData){
         //const fecha = '9/10/2026';

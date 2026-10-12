@@ -26,8 +26,8 @@ Rectangle {
 
         Text {
             id: txt1
-            width: r.width - app.fs
-            wrapMode: Text.WordWrap
+            //width: r.width - app.fs
+            //wrapMode: Text.WordWrap
             onTextChanged: {
                 font.pixelSize=app.fs*1.5
             }
@@ -99,8 +99,8 @@ Rectangle {
         }
         Text {
             id: txt2
-            width: r.width - app.fs
-            wrapMode: Text.WordWrap
+            //width: r.width - app.fs
+            //wrapMode: Text.WordWrap
             onTextChanged: {
                 font.pixelSize=app.fs*1.5
             }
