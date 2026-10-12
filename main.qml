@@ -242,6 +242,7 @@ Window {
                                 )'
             app.sqlOpen = unik.sqlQuery(sql)
         }
+        wd.setCurrentWeek()
         //let nd=new Date(Date.now())
         //app.dateSelected = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
     }
