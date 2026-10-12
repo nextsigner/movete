@@ -2,7 +2,7 @@ import QtQuick
 
 Rectangle {
     id: r
-    height: txt1.contentHeight + app.fs
+    height: co.height + app.fs
     color: apps.backgroundColor
     border.color: apps.fontColor
     border.width: 1
@@ -20,35 +20,9 @@ Rectangle {
 
     // Texto informativo opcional para visualizar la fecha actual
     Column {
+        id: col
         anchors.centerIn: parent
         spacing: app.fs
-
-//        Text {
-//            id: txt0
-//            text: "Desliza hacia la izquierda o derecha"
-//            font.pixelSize: app.fs
-//            color: apps.fontColor
-//            horizontalAlignment: Text.AlignHCenter
-//            anchors.horizontalCenter: parent.horizontalCenter
-//        }
-
-//        Text {
-//            id: txt1
-//            width: r.width - app.fs
-//            wrapMode: Text.WordWrap
-//            text: {
-//                if (!apps.currentWeek || isNaN(new Date(apps.currentWeek).getTime())) {
-//                    return "Semana: No asignada"
-//                }
-//                // Muestra siempre la fecha normalizada al Lunes de esa semana
-//                let d = r.toMonday(new Date(apps.currentWeek))
-//                return "Semana del " + d.toLocaleDateString()
-//            }
-//            font.pixelSize: app.fs * 2
-//            color: apps.fontColor
-//            horizontalAlignment: Text.AlignHCenter
-//            anchors.horizontalCenter: parent.horizontalCenter
-//        }
 
         Text {
             id: txt1
@@ -110,6 +84,24 @@ Rectangle {
                 }
             }
 
+            font.pixelSize: app.fs * 2
+            color: apps.fontColor
+            horizontalAlignment: Text.AlignHCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+        Text {
+            id: txt2
+            width: r.width - app.fs
+            wrapMode: Text.WordWrap
+            text: {
+                if (!apps.currentWeek || isNaN(new Date(apps.currentWeek).getTime())) {
+                    return "Semana: No asignada"
+                }
+                // Muestra siempre la fecha normalizada al Lunes de esa semana
+                let d = r.toMonday(new Date(apps.currentWeek))
+                d.setDate(d.getDate()+app.ciHoy)
+                return "Semana del " + d.toLocaleDateString()
+            }
             font.pixelSize: app.fs * 2
             color: apps.fontColor
             horizontalAlignment: Text.AlignHCenter
