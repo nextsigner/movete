@@ -15,6 +15,7 @@ Rectangle{
     property int a: -1
     property int altoBotones: ((r.width-app.fs*0.5)-(flowActs.spacing*(cantCols-1)))/cantCols
     property int cantCols: 4
+    property bool selected: app.ciHoy===r.ni || (app.dSelected===r.d && app.mSelected===r.m && app.aSelected===r.a)
     onDChanged: actualizar()
     //onMChanged: actualizar()
     //onAChanged: actualizar()
@@ -48,7 +49,8 @@ Rectangle{
             spacing: app.fs*0.25
             width: r.width-app.fs*0.5
             anchors.horizontalCenter: parent.horizontalCenter
-            visible: app.ciHoy===r.ni
+            visible: r.selected
+            //visible: app.ciHoy===r.ni
             Repeater{
                 id: repActividades
                 Rectangle{
@@ -142,7 +144,7 @@ Rectangle{
 
     }
     Timer{
-        running: app.ciHoy===r.ni || (app.dSelected===r.d && app.mSelected===r.m && app.aSelected===r.a)//&& !flowActs.visible
+        running: app.ciHoy===r.ni || (app.dSelected===r.d && app.mSelected===r.m && app.aSelected===r.a)
         repeat: false
         interval: 1000
         onTriggered: {
