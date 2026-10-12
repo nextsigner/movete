@@ -162,6 +162,7 @@ Rectangle {
 
                 // Actualizar la propiedad en la ventana principal con el nuevo Lunes
                 apps.currentWeek = currentDate
+                app.dateSelected=apps.currentWeek
             }
         }
     }

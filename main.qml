@@ -190,9 +190,9 @@ Window {
     Component.onCompleted: {
         let nd=new Date(Date.now())
         app.dateSelected = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
-        if(!apps.currentWeek){
+        //if(!apps.currentWeek){
             apps.currentWeek=wd.toMonday(nd)
-        }
+        //}
         app.hoy=new Date(Date.now())
 //        let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
 //        unik.sqliteInit(dataBaseFullPath)

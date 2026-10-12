@@ -40,7 +40,7 @@ Rectangle{
         Text{
             id: txt0
             text: r.aDias[r.ni]+' '+r.d+'/'+r.m+'/'+r.a+' S: '+r.selected//+'\napp.ciHoy: '+app.ciHoy+' r.ni: '+r.ni
-            font.pixelSize: app.ciHoy===r.ni?app.fs*2:app.fs
+            font.pixelSize: r.selected?app.fs*2:app.fs
             color: apps.fontColor
             anchors.horizontalCenter: parent.horizontalCenter
 
@@ -109,12 +109,7 @@ Rectangle{
             }
 
         }
-        /*Text{
-            id: txt1
-            text: '?'
-            font.pixelSize: app.fs*2
-            color: apps.fontColor
-        }*/
+
     }
     Rectangle{
         width: txt0.contentHeight-4
