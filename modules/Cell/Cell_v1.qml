@@ -25,6 +25,12 @@ Rectangle{
         a: r.a
         parent: visible?xApp:r
     }
+    MouseArea{
+        anchors.fill: parent
+        onClicked: {
+            app.dateSelected=new Date(r.a, r.m-1, r.d)
+        }
+    }
     Column{
         id: col
         spacing: app.fs*0.25
@@ -136,7 +142,7 @@ Rectangle{
 
     }
     Timer{
-        running: app.ciHoy===r.ni //&& !flowActs.visible
+        running: app.ciHoy===r.ni || (app.dSelected===r.d && app.mSelected===r.m && app.aSelected===r.a)//&& !flowActs.visible
         repeat: false
         interval: 1000
         onTriggered: {

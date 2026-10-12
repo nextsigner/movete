@@ -17,7 +17,18 @@ Window {
     property date hoy
     property int ciHoy: -1
     property bool sqlOpen: false
-    property date dateHoy
+
+    property date dateSelected
+    property int dSelected: -1
+    property int mSelected: -1
+    property int aSelected: -1
+    onDateSelectedChanged: {
+        app.dSelected=app.dateSelected.getDate()
+        app.mSelected=app.dateSelected.getMonth()+1
+        app.aSelected=app.dateSelected.getFullYear()
+    }
+
+
     Settings{
         id: apps
         property color backgroundColor: 'black'
@@ -180,9 +191,8 @@ Window {
     }
     Component.onCompleted: {
         let nd=new Date(Date.now())
-        app.dateHoy = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
+        app.dateSelected = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
         if(!apps.currentWeek){
-
             apps.currentWeek=wd.toMonday(nd)
         }
         app.hoy=new Date(Date.now())
@@ -234,7 +244,7 @@ Window {
             app.sqlOpen = unik.sqlQuery(sql)
         }
         let nd=new Date(Date.now())
-        app.dateHoy = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
+        app.dateSelected = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
     }
     function insertarRegistro(fecha, jsonData){
         //const fecha = '9/10/2026';
