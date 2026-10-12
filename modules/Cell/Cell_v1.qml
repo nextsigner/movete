@@ -5,7 +5,7 @@ Rectangle{
     id: r
     width: 50
     height: col.height+app.fs
-    color: app.ciHoy===ni?'green':'black'
+    color: r.selected?'green':'black'
     border.width: 2
     border.color: apps.fontColor
     property int ni: -1
