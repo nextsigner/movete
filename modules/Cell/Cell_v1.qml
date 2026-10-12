@@ -167,6 +167,7 @@ Rectangle{
             json.data=JSON.parse(cons[i].col[1])
             a.push(JSON.stringify(json))
         }
+        txt0.text+=a.toString()
         repActividades.model=a
     }
     function showAddActForm(){
