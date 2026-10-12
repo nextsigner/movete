@@ -139,10 +139,11 @@ Rectangle {
                     text: 'Agregar'
                     onClicked: {
                         let j={}
-                        const fecha = ''+r.d+'/'+r.m+'/'+r.a;//'9/10/2026';
+                        const fecha = ""+r.d+"/"+r.m+"/"+r.a;//'9/10/2026';
                         const jsonData = JSON.stringify({ actividad: r.cAct, series: spSeries.value, cantidad: spSeriesCant.value });
                         let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
                         let ejecutado = unik.sqlQuery(sql)
+                        log.text+='Ejecutado: '+ejecutado+'\nSQL:'+sql
                         //txt0.text+='e: '+ejecutado
                         if(ejecutado){
                             r.visible=false
