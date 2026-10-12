@@ -39,6 +39,12 @@ Window {
 
         }
     }
+    Connections{
+        target: qmlErrorLogger
+        onMessagesChanged:{
+            log.text+=''+qmlErrorLogger.messages[qmlErrorLogger.messages.length-1]+'<br>'
+        }
+    }
     Item{
         id: xApp
         width: parent.width-app.fs*4
@@ -103,6 +109,42 @@ Window {
                 font.pixelSize: parent.width*0.8
                 color: apps.fontColor
                 anchors.centerIn: parent
+            }
+        }
+    }
+    Rectangle{
+        id: xLog
+        color: apps.backgroundColor
+        anchors.fill: parent
+        visible: false
+        Flickable{
+            width: parent.width
+            height: parent.height
+            contentWidth: width
+            contentHeight: log.contentHeight
+            Text{
+                id: log
+                width: xLog.width-app.fs
+                color: apps.fontColor
+                wrapMode: Text.WordWrap
+                textFormat: Text.RichText
+                onTextChanged: {
+                    if(text!=='')xLog.visible=true
+                }
+            }
+            Rectangle{
+                width: app.fs*2
+                height: width
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: xLog.visible=false
+                }
+                Text{
+                    text: "X"
+                    font.pixelSize: parent.width*0.8
+                    color: 'black'
+                    anchors.centerIn: parent
+                }
             }
         }
     }
