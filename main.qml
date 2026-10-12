@@ -48,8 +48,6 @@ Window {
                 colDias.children[i].m=m
                 colDias.children[i].a=a
             }
-
-
         }
     }
     Connections{
@@ -137,8 +135,8 @@ Window {
                                     json TEXT NOT NULL
                                 )'
             let ejecutado = unik.sqlQuery(sql)
-            status.text='Ejecutado: '+ejecutado
-            console.log('Ejecutado: '+ejecutado)
+            app.sqlOpen=ejecutado
+            status.text='Ejecutado: '+app.sqlOpen
         }
     }
     Rectangle{

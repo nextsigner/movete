@@ -155,7 +155,7 @@ Rectangle{
     }
 
     function actualizar(){
-        //if(!app.sqlOpen)return
+        if(!app.sqlOpen)return
         let sql='SELECT id, json FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'";'
         let cons=unik.getSqlData(sql);
         //if(cons.length>0){
@@ -167,7 +167,7 @@ Rectangle{
             json.data=JSON.parse(cons[i].col[1])
             a.push(JSON.stringify(json))
         }
-        txt0.text+=a.toString()
+        //txt0.text+=a.toString()
         repActividades.model=a
     }
     function showAddActForm(){
