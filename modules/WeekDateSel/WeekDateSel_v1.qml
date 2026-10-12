@@ -8,6 +8,9 @@ Rectangle {
     border.width: 1
     radius: 8
 
+    property int cw: 0
+    property int cws: 0
+
     // Función auxiliar para obtener el Lunes de cualquier fecha dada
 
     function toMonday(dateObj) {
@@ -84,7 +87,7 @@ Rectangle {
                     let diffYearTime = monday.getTime() - firstMondayOfYear.getTime()
                     let diffYearDays = Math.floor(diffYearTime / (1000 * 60 * 60 * 24))
                     let weekOfYear = Math.max(1, Math.floor(diffYearDays / 7) + 1)
-
+                    r.cws=weekOfYear
                     return "Semana " + weekOfYear + " del año | Semana " + weekOfMonth + " del mes"
                 } catch (e) {
                     console.log("Error en cálculo de semanas:", e)
@@ -171,15 +174,17 @@ Rectangle {
         height: width
         radius: width*0.5
         anchors.right: parent.right
+        anchors.bottom: parent.bottom
         Text{
             id: txtCW
-            text: 'S:??'
+            text: 'S'+r.cw
             font.pixelSize: parent.width*0.5
             anchors.centerIn: parent
         }
     }
     function setCurrentWeek(){
-        txtCW.text="S"+getCurrentWeek()
+        //txtCW.text="S"+getCurrentWeek()
+        r.cw=getCurrentWeek()
     }
     function getCurrentWeek(){
         let date = new Date(Date.now())

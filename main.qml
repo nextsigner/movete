@@ -230,7 +230,7 @@ Window {
         for(var i=0;i<7;i++){
             let sCell=''+colDias.children[i].d+'/'+colDias.children[i].m+'/'+colDias.children[i].a
             if(sHoy===sCell){
-                app.ciHoy=i
+                if(wd.cw!==wd.cws)app.ciHoy=i
             }
         }
         if(app.sqlOpen){
