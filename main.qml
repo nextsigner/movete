@@ -46,22 +46,6 @@ Window {
         }
     }
     Item{
-        id: itemSqlite
-        Component.onCompleted: {
-            let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
-            unik.sqliteInit(dataBaseFullPath)
-            let sql='CREATE TABLE IF NOT EXISTS registros
-                                (
-                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    fecha TEXT NOT NULL,
-                                    json TEXT NOT NULL
-                                )'
-            let ejecutado = unik.sqlQuery(sql)
-            status.text='Ejecutado: '+ejecutado
-            console.log('Ejecutado: '+ejecutado)
-        }
-    }
-    Item{
         id: xApp
         width: parent.width-app.fs*4
         height: parent.height-app.fs*6
@@ -126,6 +110,22 @@ Window {
                 color: apps.fontColor
                 anchors.centerIn: parent
             }
+        }
+    }
+    Item{
+        id: itemSqlite
+        Component.onCompleted: {
+            let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
+            unik.sqliteInit(dataBaseFullPath)
+            let sql='CREATE TABLE IF NOT EXISTS registros
+                                (
+                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    fecha TEXT NOT NULL,
+                                    json TEXT NOT NULL
+                                )'
+            let ejecutado = unik.sqlQuery(sql)
+            status.text='Ejecutado: '+ejecutado
+            console.log('Ejecutado: '+ejecutado)
         }
     }
     Rectangle{

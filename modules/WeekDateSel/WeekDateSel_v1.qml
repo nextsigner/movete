@@ -28,7 +28,15 @@ Rectangle {
             id: txt1
             width: r.width - app.fs
             wrapMode: Text.WordWrap
-
+            onTextChanged: {
+                font.pixelSize=app.fs*1.5
+            }
+            Timer{
+                running: parent.contentWidth>r.width-app.fs
+                repeat: true
+                interval: 100
+                onTriggered: parent.font.pixelSize-=2
+            }
             text: {
                 try {
                     if (!apps.currentWeek) {
@@ -77,7 +85,7 @@ Rectangle {
                     let diffYearDays = Math.floor(diffYearTime / (1000 * 60 * 60 * 24))
                     let weekOfYear = Math.max(1, Math.floor(diffYearDays / 7) + 1)
 
-                    return "Semana " + weekOfYear + " del año\nSemana " + weekOfMonth + " del mes"
+                    return "Semana " + weekOfYear + " del año | Semana " + weekOfMonth + " del mes"
                 } catch (e) {
                     console.log("Error en cálculo de semanas:", e)
                     return "Semana: Error de cálculo"
@@ -93,6 +101,15 @@ Rectangle {
             id: txt2
             width: r.width - app.fs
             wrapMode: Text.WordWrap
+            onTextChanged: {
+                font.pixelSize=app.fs*1.5
+            }
+            Timer{
+                running: parent.contentWidth>r.width-app.fs
+                repeat: true
+                interval: 100
+                onTriggered: parent.font.pixelSize-=2
+            }
             text: {
                 if (!apps.currentWeek || isNaN(new Date(apps.currentWeek).getTime())) {
                     return "Semana: No asignada"
