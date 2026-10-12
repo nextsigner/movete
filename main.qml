@@ -46,6 +46,22 @@ Window {
         }
     }
     Item{
+        id: itemSqlite
+        Component.onCompleted: {
+            let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
+            unik.sqliteInit(dataBaseFullPath)
+            let sql='CREATE TABLE IF NOT EXISTS registros
+                                (
+                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    fecha TEXT NOT NULL,
+                                    json TEXT NOT NULL
+                                )'
+            let ejecutado = unik.sqlQuery(sql)
+            status.text='Ejecutado: '+ejecutado
+            console.log('Ejecutado: '+ejecutado)
+        }
+    }
+    Item{
         id: xApp
         width: parent.width-app.fs*4
         height: parent.height-app.fs*6
@@ -166,17 +182,17 @@ Window {
             apps.currentWeek=wd.toMonday(nd)
         }
         app.hoy=new Date(Date.now())
-        let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
-        unik.sqliteInit(dataBaseFullPath)
-        let sql='CREATE TABLE IF NOT EXISTS registros
-                            (
-                                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                fecha TEXT NOT NULL,
-                                json TEXT NOT NULL
-                            )'
-        let ejecutado = unik.sqlQuery(sql)
-        status.text='Ejecutado: '+ejecutado
-        console.log('Ejecutado: '+ejecutado)
+//        let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
+//        unik.sqliteInit(dataBaseFullPath)
+//        let sql='CREATE TABLE IF NOT EXISTS registros
+//                            (
+//                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+//                                fecha TEXT NOT NULL,
+//                                json TEXT NOT NULL
+//                            )'
+//        let ejecutado = unik.sqlQuery(sql)
+//        status.text='Ejecutado: '+ejecutado
+//        console.log('Ejecutado: '+ejecutado)
 
 
 //        const fecha = '9/10/2026';

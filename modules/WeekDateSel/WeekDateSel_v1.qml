@@ -2,7 +2,7 @@ import QtQuick
 
 Rectangle {
     id: r
-    height: col.height + app.fs
+    height: col.height + app.fs*0.25
     color: apps.backgroundColor
     border.color: apps.fontColor
     border.width: 1
@@ -77,14 +77,14 @@ Rectangle {
                     let diffYearDays = Math.floor(diffYearTime / (1000 * 60 * 60 * 24))
                     let weekOfYear = Math.max(1, Math.floor(diffYearDays / 7) + 1)
 
-                    return "Semana " + weekOfYear + " del año — Semana " + weekOfMonth + " del mes"
+                    return "Semana " + weekOfYear + " del año\nSemana " + weekOfMonth + " del mes"
                 } catch (e) {
                     console.log("Error en cálculo de semanas:", e)
                     return "Semana: Error de cálculo"
                 }
             }
 
-            font.pixelSize: app.fs * 2
+            font.pixelSize: app.fs// * 2
             color: apps.fontColor
             horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
@@ -100,9 +100,9 @@ Rectangle {
                 // Muestra siempre la fecha normalizada al Lunes de esa semana
                 let d = r.toMonday(new Date(apps.currentWeek))
                 d.setDate(d.getDate()+app.ciHoy)
-                return "Semana del " + d.toLocaleDateString()
+                return ''+d.toLocaleDateString()
             }
-            font.pixelSize: app.fs * 2
+            font.pixelSize: app.fs// * 2
             color: apps.fontColor
             horizontalAlignment: Text.AlignHCenter
             anchors.horizontalCenter: parent.horizontalCenter
