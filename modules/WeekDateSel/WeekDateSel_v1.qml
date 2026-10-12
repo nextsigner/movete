@@ -2,7 +2,7 @@ import QtQuick
 
 Rectangle {
     id: r
-    height: co.height + app.fs
+    height: col.height + app.fs
     color: apps.backgroundColor
     border.color: apps.fontColor
     border.width: 1
