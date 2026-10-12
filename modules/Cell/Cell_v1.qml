@@ -30,6 +30,7 @@ Rectangle{
         anchors.fill: parent
         onClicked: {
             app.dateSelected=new Date(r.a, r.m-1, r.d)
+            log.text+='Seleccionado: '+app.dateSelected.toString()
         }
     }
     Column{
