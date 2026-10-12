@@ -117,7 +117,7 @@ Rectangle{
             anchors.fill: parent
             onClicked: {
                 //let sql='DELETE from registros'
-                const fechaAEliminar = "9/10/2026";
+                const fechaAEliminar = ""+r.d+"/"+r.m+"/"+r.a//"9/10/2026";
 
                 // El string de la consulta SQL directa
                 let sql = 'DELETE FROM registros WHERE fecha = "'+fechaAEliminar+'";'

@@ -17,6 +17,7 @@ Window {
     property date hoy
     property int ciHoy: -1
     property bool sqlOpen: false
+    property date dateHoy
     Settings{
         id: apps
         property color backgroundColor: 'black'
@@ -94,7 +95,7 @@ Window {
                 onClicked: {
                     //formAddAct.visible=true
                     colDias.children[app.ciHoy].showAddActForm()
-                    return
+                    /*return
                     const fecha = '9/10/2026';
                     const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
                     let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
@@ -102,7 +103,7 @@ Window {
                     //txt0.text+='e: '+ejecutado
                     if(ejecutado){
                         actualizar()
-                    }
+                    }*/
                 }
             }
             Text{
@@ -178,8 +179,10 @@ Window {
         onTriggered: checkHoy()
     }
     Component.onCompleted: {
+        let nd=new Date(Date.now())
+        app.dateHoy = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
         if(!apps.currentWeek){
-            let nd=new Date(Date.now())
+
             apps.currentWeek=wd.toMonday(nd)
         }
         app.hoy=new Date(Date.now())
@@ -230,7 +233,8 @@ Window {
                                 )'
             app.sqlOpen = unik.sqlQuery(sql)
         }
-
+        let nd=new Date(Date.now())
+        app.dateHoy = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
     }
     function insertarRegistro(fecha, jsonData){
         //const fecha = '9/10/2026';
