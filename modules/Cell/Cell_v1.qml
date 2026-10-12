@@ -111,34 +111,36 @@ Rectangle{
         }
 
     }
-    Rectangle{
-        width: txt0.contentHeight-4
-        height: width
-        anchors.right: parent.right
-        anchors.rightMargin: 2
-        //anchors.verticalCenter: parent.verticalCenter
-        MouseArea{
-            anchors.fill: parent
-            onClicked: {
-                //let sql='DELETE from registros'
-                const fechaAEliminar = ""+r.d+"/"+r.m+"/"+r.a//"9/10/2026";
 
-                // El string de la consulta SQL directa
-                let sql = 'DELETE FROM registros WHERE fecha = "'+fechaAEliminar+'";'
-                let ejecutado = unik.sqlQuery(sql)
-                if(ejecutado){
-                    actualizar()
-                }
-            }
-        }
-        Text{
-            text: "X"
-            font.pixelSize: parent.width*0.9
-            color: 'black'
-            anchors.centerIn: parent
-        }
+//    Rectangle{
+//        width: txt0.contentHeight-4
+//        height: width
+//        anchors.right: parent.right
+//        anchors.rightMargin: 2
+//        //anchors.verticalCenter: parent.verticalCenter
+//        MouseArea{
+//            anchors.fill: parent
+//            onClicked: {
+//                //let sql='DELETE from registros'
+//                const fechaAEliminar = ""+r.d+"/"+r.m+"/"+r.a//"9/10/2026";
 
-    }
+//                // El string de la consulta SQL directa
+//                let sql = 'DELETE FROM registros WHERE fecha = "'+fechaAEliminar+'";'
+//                let ejecutado = unik.sqlQuery(sql)
+//                if(ejecutado){
+//                    actualizar()
+//                }
+//            }
+//        }
+//        Text{
+//            text: "X"
+//            font.pixelSize: parent.width*0.9
+//            color: 'black'
+//            anchors.centerIn: parent
+//        }
+
+//    }
+
     Timer{
         running: app.ciHoy===r.ni || (app.dSelected===r.d && app.mSelected===r.m && app.aSelected===r.a)
         repeat: false

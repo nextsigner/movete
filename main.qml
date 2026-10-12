@@ -66,6 +66,7 @@ Window {
             text: app.title
             font.pixelSize: app.fs
             color: apps.fontColor
+            visible: false
         }
         Column{
             spacing: app.fs

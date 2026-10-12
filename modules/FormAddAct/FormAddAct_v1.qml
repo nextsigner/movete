@@ -152,6 +152,21 @@ Rectangle {
                     }
                 }
             }
+            Item{width: 1; height: app.fs*2}
+            Button{
+                text: 'Eliminar Todo'
+                onClicked: {
+                    const fechaAEliminar = ""+r.d+"/"+r.m+"/"+r.a//"9/10/2026";
+
+                    // El string de la consulta SQL directa
+                    let sql = 'DELETE FROM registros WHERE fecha = "'+fechaAEliminar+'";'
+                    let ejecutado = unik.sqlQuery(sql)
+                    if(ejecutado){
+                        r.visible=false
+                        r.parent.actualizar()
+                    }
+                }
+            }
         }
     }
 }
