@@ -241,8 +241,8 @@ Window {
                                 )'
             app.sqlOpen = unik.sqlQuery(sql)
         }
-        let nd=new Date(Date.now())
-        app.dateSelected = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
+        //let nd=new Date(Date.now())
+        //app.dateSelected = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
     }
     function insertarRegistro(fecha, jsonData){
         //const fecha = '9/10/2026';
