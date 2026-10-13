@@ -90,7 +90,7 @@ Rectangle {
                         id: xAct
                         //width: app.fs * 6
                         width: r.altoBotones
-                        height: width
+                        height: colFlow.height+app.fs//width
                         color: 'black'
 
                         // Usamos r.selectedIndex en lugar de buscar en children
@@ -108,6 +108,7 @@ Rectangle {
                             }
                         }
                         Column{
+                            id: colFlow
                             anchors.centerIn: parent
                             Image {
                                 width: parent.parent.height * 0.9
@@ -119,7 +120,7 @@ Rectangle {
                             Text{
                                 text: "<b>"+(""+modelData).toUpperCase().replace('.jpeg', '').replace(/_/g, ' ')+"</b>"
                                 color: apps.fontColor
-                                font.pixelSize: app.fs*2
+                                font.pixelSize: app.fs//*2
                                 wrapMode: Text.WordWrap
                                 anchors.horizontalCenter: parent.horizontalCenter
                             }
