@@ -121,7 +121,7 @@ Rectangle {
                                 text: "<b>"+(""+modelData).toUpperCase().replace('.JPEG', '').replace(/_/g, ' ')+"</b>"
                                 width: img1.width
                                 color: apps.fontColor
-                                font.pixelSize: app.fs*2
+                                font.pixelSize: app.fs*1.5
                                 wrapMode: Text.WordWrap
                                 horizontalAlignment: Text.AlignHCenter
                                 anchors.horizontalCenter: parent.horizontalCenter
@@ -202,8 +202,14 @@ Rectangle {
                     text: 'Agregar'
                     onClicked: {
                         let j={}
+                        let d = new Date(Date.now())
                         const fecha = ""+r.d+"/"+r.m+"/"+r.a;//'9/10/2026';
-                        const jsonData = JSON.stringify({ actividad: r.cAct, series: spSeries.value, cantidad: spSeriesCant.value });
+                        const jsonData = JSON.stringify({
+                                                            actividad: r.cAct,
+                                                            series: spSeries.value,
+                                                            cantidad: spSeriesCant.value,
+                                                            ms: d.getTime()
+                                                        });
                         let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
                         let ejecutado = unik.sqlQuery(sql)
                         //log.text+='Ejecutado: '+ejecutado+'\nSQL:'+sql
