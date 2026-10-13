@@ -43,8 +43,6 @@ Rectangle {
             clip: true
             Flow {
                 id: flow
-                spacing: app.fs
-                //width: mainColumn.width
                 spacing: app.fs*0.25
                 width: r.width-app.fs*0.5
 
