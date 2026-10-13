@@ -178,7 +178,6 @@ Rectangle {
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                Qt.quit()
                 let nd=new Date(Date.now())
                 app.dateSelected = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
                 apps.currentWeek=wd.toMonday(nd)
@@ -186,7 +185,7 @@ Rectangle {
         }
         Text{
             id: txtCW
-            text: 'S'+r.cw
+            text: '<b>S'+r.cw+'</b>'
             font.pixelSize: parent.width*0.5
             anchors.centerIn: parent
         }
