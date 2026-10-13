@@ -175,6 +175,14 @@ Rectangle {
         radius: width*0.5
         anchors.right: parent.right
         anchors.bottom: parent.top
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                let nd=new Date(Date.now())
+                app.dateSelected = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
+                apps.currentWeek=wd.toMonday(nd)
+            }
+        }
         Text{
             id: txtCW
             text: 'S'+r.cw
