@@ -107,13 +107,22 @@ Rectangle {
                                 r.cAct = modelData
                             }
                         }
-
-                        Image {
-                            width: parent.height * 0.9
-                            height: width
-                            //source: 'file:./imgs/' + modelData + '.jpeg'
-                            source: 'file:./imgs/' + modelData
+                        Column{
                             anchors.centerIn: parent
+                            Image {
+                                width: parent.height * 0.9
+                                height: width
+                                //source: 'file:./imgs/' + modelData + '.jpeg'
+                                source: 'file:./imgs/' + modelData
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
+                            Text{
+                                text: "<b>"+(""+modelData).toUpperCase().replace('.jpeg', '').replace(/_/g, ' ')+"</b>"
+                                color: apps.fontColor
+                                font.pixelSize: app.fs*2
+                                wrapMode: Text.WordWrap
+                                anchors.horizontalCenter: parent.horizontalCenter
+                            }
                         }
                     }
                 }
