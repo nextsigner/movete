@@ -110,7 +110,7 @@ Rectangle {
                         Column{
                             anchors.centerIn: parent
                             Image {
-                                width: parent.height * 0.9
+                                width: parent.parent.height * 0.9
                                 height: width
                                 //source: 'file:./imgs/' + modelData + '.jpeg'
                                 source: 'file:./imgs/' + modelData
