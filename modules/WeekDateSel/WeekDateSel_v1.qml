@@ -178,6 +178,7 @@ Rectangle {
         MouseArea{
             anchors.fill: parent
             onClicked: {
+                Qt.quit()
                 let nd=new Date(Date.now())
                 app.dateSelected = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
                 apps.currentWeek=wd.toMonday(nd)
