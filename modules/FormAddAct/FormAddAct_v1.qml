@@ -16,7 +16,7 @@ Rectangle {
     property int selectedIndex: -1
 
     property int altoBotones: ((r.width-app.fs*0.5)-(flow.spacing*(cantCols-1)))/cantCols
-    property int cantCols: 4
+    property int cantCols: 3
 
     onVisibleChanged: {
         if (!visible) {
@@ -24,7 +24,6 @@ Rectangle {
             r.selectedIndex = -1
         }
     }
-
     Column {
         id: mainColumn
         spacing: app.fs
@@ -45,7 +44,9 @@ Rectangle {
             Flow {
                 id: flow
                 spacing: app.fs
-                width: mainColumn.width
+                //width: mainColumn.width
+                spacing: app.fs*0.25
+                width: r.width-app.fs*0.5
 
                 Repeater {
                     //model: ['hidratarse', 'abdominales', 'sentadillas', 'flexiones']
