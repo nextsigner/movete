@@ -46,7 +46,7 @@ Rectangle {
 
                 Repeater {
                     //model: ['hidratarse', 'abdominales', 'sentadillas', 'flexiones']
-                    model: const archivos = [
+                    model: [
                         "abdominales.jpeg",
                         "almorzar.jpeg",
                         "aprender_filosofia.jpeg",
