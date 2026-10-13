@@ -33,46 +33,90 @@ Rectangle {
             font.pixelSize: app.fs
             color: 'white'
         }
-
-        Flow {
-            id: flow
-            spacing: app.fs
+        Flickable{
             width: mainColumn.width
+            height: app.fs*20
+            contentWidth: width
+            contentHeight: flow.height
+            clip: true
+            Flow {
+                id: flow
+                spacing: app.fs
+                width: mainColumn.width
 
-            Repeater {
-                model: ['hidratarse', 'abdominales', 'sentadillas', 'flexiones']
-
-                delegate: Rectangle {
-                    id: xAct
-                    width: app.fs * 6
-                    height: width
-                    color: 'black'
-
-                    // Usamos r.selectedIndex en lugar de buscar en children
-                    property bool selected: (r.selectedIndex === index)
-
-                    border.width: selected ? 4 : 1
-                    border.color: selected ? 'red' : 'white'
-                    opacity: selected ? 1.0 : 0.75
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            r.selectedIndex = index
-                            r.cAct = modelData
-                        }
-                    }
-
-                    Image {
-                        width: parent.height * 0.9
+                Repeater {
+                    //model: ['hidratarse', 'abdominales', 'sentadillas', 'flexiones']
+                    model: const archivos = [
+                        "abdominales.jpeg",
+                        "almorzar.jpeg",
+                        "aprender_filosofia.jpeg",
+                        "aprender.jpeg",
+                        "bailando.jpeg",
+                        "biceps_3kg.jpeg",
+                        "biceps_6kg.jpeg",
+                        "buen_momento.jpeg",
+                        "cenar.jpeg",
+                        "destender_ropa.jpeg",
+                        "doblar_ropa.jpeg",
+                        "dormir_siesta.jpeg",
+                        "ducharse.jpeg",
+                        "escuchar_musica.jpeg",
+                        "flexiones.jpeg",
+                        "fumar.jpeg",
+                        "haciendo_la_cama.jpeg",
+                        "hidratarse.jpeg",
+                        "judo_amateur.jpeg",
+                        "judo_competitivo.jpeg",
+                        "lavando_ropa.jpeg",
+                        "lavar_platos.jpeg",
+                        "limpiar_baño.jpeg",
+                        "mal_momento.jpeg",
+                        "mateando.jpeg",
+                        "paseando.jpeg",
+                        "pesandose.jpeg",
+                        "programar.jpeg",
+                        "rotar_tronco.jpeg",
+                        "sentadillas_3kg.jpeg",
+                        "sentadillas_6kg.jpeg",
+                        "sentadillas.jpeg",
+                        "tender_ropa.jpeg",
+                        "tomar_alcohol.jpeg",
+                        "tomar_gaseosa.jpeg",
+                        "vuelos_laterales_3kg.jpeg"
+                    ];
+                    delegate: Rectangle {
+                        id: xAct
+                        width: app.fs * 6
                         height: width
-                        source: 'file:./imgs/' + modelData + '.jpeg'
-                        anchors.centerIn: parent
+                        color: 'black'
+
+                        // Usamos r.selectedIndex en lugar de buscar en children
+                        property bool selected: (r.selectedIndex === index)
+
+                        border.width: selected ? 4 : 1
+                        border.color: selected ? 'red' : 'white'
+                        opacity: selected ? 1.0 : 0.75
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                r.selectedIndex = index
+                                r.cAct = modelData
+                            }
+                        }
+
+                        Image {
+                            width: parent.height * 0.9
+                            height: width
+                            //source: 'file:./imgs/' + modelData + '.jpeg'
+                            source: 'file:./imgs/' + modelData
+                            anchors.centerIn: parent
+                        }
                     }
                 }
             }
-        }
 
+        }
         Column {
             visible: r.cAct !== ''
             spacing: app.fs / 2
