@@ -43,7 +43,7 @@ Rectangle {
             clip: true
             Flow {
                 id: flow
-                spacing: app.fs*0.25
+                spacing: app.fs//*0.25
                 width: r.width-app.fs*0.5
 
                 Repeater {
@@ -111,9 +111,8 @@ Rectangle {
                             id: colFlow
                             anchors.centerIn: parent
                             Image {
-                                width: parent.parent.height * 0.9
+                                width: parent.parent.width*0.9//height * 0.9
                                 height: width
-                                //source: 'file:./imgs/' + modelData + '.jpeg'
                                 source: 'file:./imgs/' + modelData
                                 anchors.horizontalCenter: parent.horizontalCenter
                             }
