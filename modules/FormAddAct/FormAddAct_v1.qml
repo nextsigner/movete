@@ -125,6 +125,12 @@ Rectangle {
                                 wrapMode: Text.WordWrap
                                 horizontalAlignment: Text.AlignHCenter
                                 anchors.horizontalCenter: parent.horizontalCenter
+                                Timer{
+                                    running: parent.contentWidth>(img1.width-app.fs)
+                                    repeat: true
+                                    interval: 100
+                                    onTriggered: parent.font.pixelSize-=2
+                                }
                             }
                         }
                     }
@@ -135,13 +141,11 @@ Rectangle {
         Column {
             visible: r.cAct !== ''
             spacing: app.fs / 2
-
             Text {
                 text: "Actividad: " + r.cAct
                 font.pixelSize: app.fs*2
                 color: 'white'
             }
-
             Row {
                 spacing: app.fs
                 Text {
