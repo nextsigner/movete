@@ -32,12 +32,12 @@ Rectangle {
 
         Text {
             text: "Agregar Actividad"
-            font.pixelSize: app.fs
+            font.pixelSize: app.fs*2
             color: 'white'
         }
         Flickable{
             width: r.width-app.fs*0.5
-            height: app.fs*20
+            height: app.fs*30
             contentWidth: width
             contentHeight: flow.height
             clip: true
@@ -121,8 +121,9 @@ Rectangle {
                                 text: "<b>"+(""+modelData).toUpperCase().replace('.JPEG', '').replace(/_/g, ' ')+"</b>"
                                 width: img1.width
                                 color: apps.fontColor
-                                font.pixelSize: app.fs//*2
+                                font.pixelSize: app.fs*2
                                 wrapMode: Text.WordWrap
+                                horizontalAlignment: Text.AlignHCenter
                                 anchors.horizontalCenter: parent.horizontalCenter
                             }
                         }
@@ -137,7 +138,7 @@ Rectangle {
 
             Text {
                 text: "Actividad: " + r.cAct
-                font.pixelSize: app.fs
+                font.pixelSize: app.fs*2
                 color: 'white'
             }
 
@@ -145,14 +146,14 @@ Rectangle {
                 spacing: app.fs
                 Text {
                     text: "Series: "
-                    font.pixelSize: app.fs
+                    font.pixelSize: app.fs*2
                     color: 'white'
                     anchors.verticalCenter: spSeries.verticalCenter
                 }
 
                 NsSpinBox {
                     id: spSeries
-                    fs: app.fs
+                    fs: app.fs*2
                     from: 1
                     to: 50
                     value: 1
@@ -164,7 +165,7 @@ Rectangle {
                 spacing: app.fs
                 Text {
                     text: "Cantidad por serie: "
-                    font.pixelSize: app.fs
+                    font.pixelSize: app.fs*2
                     color: 'white'
                     anchors.verticalCenter: spSeries.verticalCenter
                 }
@@ -182,7 +183,7 @@ Rectangle {
                 spacing: app.fs
                 Text {
                     text: "Cantidad total: "+(parseInt(spSeries.value*spSeriesCant.value))
-                    font.pixelSize: app.fs
+                    font.pixelSize: app.fs*2
                     color: 'white'
                     anchors.verticalCenter: spSeries.verticalCenter
                 }
