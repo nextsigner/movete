@@ -16,7 +16,7 @@ Rectangle {
     property int selectedIndex: -1
 
     property int altoBotones: ((r.width-app.fs*0.5)-(flow.spacing*(cantCols-1)))/cantCols
-    property int cantCols: 3
+    property int cantCols: 2
 
     onVisibleChanged: {
         if (!visible) {
@@ -36,7 +36,7 @@ Rectangle {
             color: 'white'
         }
         Flickable{
-            width: mainColumn.width
+            width: r.width-app.fs*0.5
             height: app.fs*20
             contentWidth: width
             contentHeight: flow.height
