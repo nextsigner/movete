@@ -26,7 +26,6 @@ Rectangle {
         id: col
         anchors.centerIn: parent
         spacing: app.fs
-
         Text {
             id: txt1
             //width: r.width - app.fs
@@ -175,6 +174,7 @@ Rectangle {
         radius: width*0.5
         anchors.right: parent.right
         anchors.bottom: parent.top
+        z: mouseArea.z+1
         MouseArea{
             anchors.fill: parent
             onClicked: {
