@@ -7,6 +7,8 @@ Rectangle {
     anchors.fill: parent
     visible: false
 
+    property int fs: app.fs*1.5
+
     property int d: -1
     property int m: -1
     property int a: -1
@@ -32,7 +34,7 @@ Rectangle {
 
         Text {
             text: "Agregar Actividad"
-            font.pixelSize: app.fs*2
+            font.pixelSize: r.fs
             color: 'white'
         }
         Flickable{
@@ -104,7 +106,7 @@ Rectangle {
                             anchors.fill: parent
                             onClicked: {
                                 r.selectedIndex = index
-                                r.cAct = modelData
+                                r.cAct = (""+modelData).replace('.jpeg', '')
                             }
                         }
                         Column{
@@ -142,15 +144,15 @@ Rectangle {
             visible: r.cAct !== ''
             spacing: app.fs / 2
             Text {
-                text: "Actividad: " + r.cAct
-                font.pixelSize: app.fs*2
+                text: "Actividad: " + r.cAct.toUpperCase().replace(/_/g, ' ')
+                font.pixelSize: r.fs
                 color: 'white'
             }
             Row {
                 spacing: app.fs
                 Text {
                     text: "Series: "
-                    font.pixelSize: app.fs*2
+                    font.pixelSize: r.fs
                     color: 'white'
                     anchors.verticalCenter: spSeries.verticalCenter
                 }
@@ -169,7 +171,7 @@ Rectangle {
                 spacing: app.fs
                 Text {
                     text: "Cantidad por serie: "
-                    font.pixelSize: app.fs*2
+                    font.pixelSize: r.fs
                     color: 'white'
                     anchors.verticalCenter: spSeries.verticalCenter
                 }
@@ -187,7 +189,7 @@ Rectangle {
                 spacing: app.fs
                 Text {
                     text: "Cantidad total: "+(parseInt(spSeries.value*spSeriesCant.value))
-                    font.pixelSize: app.fs*2
+                    font.pixelSize: r.fs
                     color: 'white'
                     anchors.verticalCenter: spSeries.verticalCenter
                 }

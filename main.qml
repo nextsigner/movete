@@ -100,6 +100,7 @@ Window {
             anchors.bottomMargin: app.fs
             anchors.right: parent.right
             anchors.rightMargin: app.fs
+            visible: app.ciHoy>=0
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
