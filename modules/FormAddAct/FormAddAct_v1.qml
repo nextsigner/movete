@@ -15,6 +15,9 @@ Rectangle {
     property string cAct: ''
     property int selectedIndex: -1
 
+    property int altoBotones: ((r.width-app.fs*0.5)-(flow.spacing*(cantCols-1)))/cantCols
+    property int cantCols: 4
+
     onVisibleChanged: {
         if (!visible) {
             r.cAct = ''
@@ -86,7 +89,8 @@ Rectangle {
                     ];
                     delegate: Rectangle {
                         id: xAct
-                        width: app.fs * 6
+                        //width: app.fs * 6
+                        width: r.altoBotones
                         height: width
                         color: 'black'
 
