@@ -111,13 +111,15 @@ Rectangle {
                             id: colFlow
                             anchors.centerIn: parent
                             Image {
+                                id: img1
                                 width: parent.parent.width*0.9//height * 0.9
                                 height: width
                                 source: 'file:./imgs/' + modelData
                                 anchors.horizontalCenter: parent.horizontalCenter
                             }
                             Text{
-                                text: "<b>"+(""+modelData).toUpperCase().replace('.jpeg', '').replace(/_/g, ' ')+"</b>"
+                                text: "<b>"+(""+modelData).toUpperCase().replace('.JPEG', '').replace(/_/g, ' ')+"</b>"
+                                width: img1.width
                                 color: apps.fontColor
                                 font.pixelSize: app.fs//*2
                                 wrapMode: Text.WordWrap
