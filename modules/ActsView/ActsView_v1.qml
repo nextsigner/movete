@@ -91,7 +91,7 @@ Rectangle {
                                 width: parent.parent.width*0.9//height * 0.9
                                 height: width
                                 //source: 'file:./imgs/' + modelData
-                                source: 'file:./imgs/'+xAct.j.data.actividad+'.jpeg'
+                                source: 'file:../../imgs/'+xAct.j.data.actividad+'.jpeg'
                                 anchors.horizontalCenter: parent.horizontalCenter
                             }
                             Text{
