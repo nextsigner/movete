@@ -121,9 +121,11 @@ Rectangle {
             visible: r.cAct !== ''
             spacing: app.fs / 2
             Text {
-                text: "Actividad: " + r.cAct.toUpperCase().replace(/_/g, ' ')
+                text: "Actividad Seleccionada: " + r.cAct.toUpperCase().replace(/_/g, ' ')
                 font.pixelSize: r.fs
                 color: 'white'
+                width: r.width-app.fs*2
+                wrapMode: Text.WordWrap
             }
             Row{
                 spacing: app.fs
@@ -141,7 +143,10 @@ Rectangle {
                     text: 'Eliminar Actividad Seleccionada'
                     anchors.verticalCenter: parent.verticalCenter
                     onClicked: {
-                        log.text+='Eliminando '+r.cActIdSelected+'<br>'
+                        //log.text+='Eliminando '+r.cActIdSelected+'<br>'
+                        let sql='DETELE FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'" AND id = '+r.cActIdSelected+';'
+                        let ejecutado = unik.sqlQuery(sql)
+                        log.text+='Eliminado '+ejecutado+'<br>'
                     }
                 }
             }
