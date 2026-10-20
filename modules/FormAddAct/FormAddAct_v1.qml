@@ -287,7 +287,7 @@ ORDER BY total DESC;'
         }
         for(i=0;i<aActs.length;i++){
             if(aActsRanking.indexOf(aActs[i])<0){
-                a.push(aActsRanking[i])
+                a.push(aActs[i])
             }
         }
         log.text+='a: ['+a.toString().split(',').join(' | ')+']'
