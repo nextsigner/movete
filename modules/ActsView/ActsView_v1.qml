@@ -216,6 +216,7 @@ Rectangle {
     function actualizar(){
         if(!app.sqlOpen)return
         let sql='SELECT id, json FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'";'
+        log.text+='<br>SQL: '+sql+'<br>'
         let cons=unik.getSqlData(sql);
         //if(cons.length>0){
         let a=[]
