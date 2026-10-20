@@ -152,7 +152,7 @@ Rectangle {
                             r.cAct=''
                             r.actualizar()
                             for(var i=0;i<colDias.children.length;i++){
-                                colDias.children[i].actualizar()
+                                if(colDias.children.objectName.indexOf('cell_')>=0)colDias.children[i].actualizar()
                             }
                         }
                         //log.text+='Eliminado '+ejecutado+'<br>'

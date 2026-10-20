@@ -105,6 +105,7 @@ Window {
                 anchors.fill: parent
                 onClicked: {
                     //formAddAct.visible=true
+                    log.text+='Fecha: '+app.dateSelected.toString()+'<br>'
                     colDias.children[app.ciHoy].showAddActForm()
                     /*return
                     const fecha = '9/10/2026';
@@ -144,11 +145,14 @@ Window {
     Rectangle{
         id: xLog
         color: apps.backgroundColor
-        anchors.fill: parent
+        //anchors.fill: parent
+        width: parent.width-app.fs*4
+        height: parent.height-app.fs*6
+        anchors.centerIn: parent
         visible: false
         Flickable{
-            width: parent.width-app.fs*4
-            height: parent.height-app.fs*6
+            width: parent.width
+            height: parent.height
             contentWidth: width
             contentHeight: log.contentHeight
             anchors.centerIn: parent
