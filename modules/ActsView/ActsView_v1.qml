@@ -19,7 +19,7 @@ Rectangle {
 
     property int altoBotones: ((r.width-app.fs*0.5)-(flow.spacing*(cantCols-1)))/cantCols
     property int cantCols: 2
-    property var j: ({})
+    property var j//: ({})
 
     onJChanged: {
         log.text+='JSON 2: '+JSON.stringify(j, null, 2)
