@@ -82,8 +82,8 @@ Rectangle {
                             anchors.fill: parent
                             onClicked: {
                                 r.selectedIndex = index
-                                r.cAct = (""+modelData).replace('.jpeg', '')
-                                log.text+='Id seleccionado: '+xAct.j.data.id+'<br>'
+                                r.cAct = (""+xAct.j.data.actividad).replace('.jpeg', '')
+                                log.text+='Id seleccionado: '+xAct.j.id+'<br>'
                             }
                         }
                         Column{
@@ -171,7 +171,7 @@ Rectangle {
     function actualizar(){
         if(!app.sqlOpen)return
         let sql='SELECT id, json FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'";'
-        log.text+='<br>SQL: '+sql+'<br>'
+        //log.text+='<br>SQL: '+sql+'<br>'
         let cons=unik.getSqlData(sql);
         //if(cons.length>0){
         let a=[]
@@ -182,8 +182,6 @@ Rectangle {
             json.data=JSON.parse(cons[i].col[1])
             a.push(JSON.stringify(json))
         }
-        //txt0.text+=a.toString()
-        //repActividades.model=a
         repActsDeFecha.model=a
     }
 }
