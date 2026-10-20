@@ -24,6 +24,8 @@ Rectangle {
         if (!visible) {
             r.cAct = ''
             r.selectedIndex = -1
+        }else{
+            actualizarActs()
         }
     }
     Column {
@@ -49,67 +51,11 @@ Rectangle {
                 width: r.width-app.fs*0.5
 
                 Repeater {
+                    id: repActs
                     //model: ['hidratarse', 'abdominales', 'sentadillas', 'flexiones']
                     //Prompt para icono:
                     //Creame una imagen tipo ícono para mi app. Debe ser de 128x128 pixeles. No tiene que ser un dibujo detallado. Fondo negro, figura blanca y naranja. Este ícono debe representar de manera gráfica sin texto alguno la siguiente accción: ""
-                    model: [
-                        "hidratarse.jpeg",
-                        "bicicleta_fija.jpeg",
-                        "abdominales.jpeg",
-                        "saltando_en_el_lugar.jpeg",
-                        "levantar_rodillas.jpeg",
-                        "biceps_3kg.jpeg",
-                        "biceps_6kg.jpeg",
 
-                        "acostado_bicicleta.jpeg",
-                        "acostado_tijera_1.jpeg",
-                        "acostado_tijera_2.jpeg",
-                        "acostado_circulo_1.jpeg",
-                        "acostado_circulo_2.jpeg",
-
-                        "rotar_cuello.jpeg",
-                        "rotar_tronco.jpeg",
-                        "rotar_hombros_1.jpeg",
-                        "rotar_hombros_2.jpeg",
-                        "rotar_hombros_3.jpeg",
-                        "sentadillas_3kg.jpeg",
-                        "sentadillas_6kg.jpeg",
-                        "sentadillas.jpeg",
-                        "flexiones.jpeg",
-                        "vuelos_laterales_3kg.jpeg",
-                        "pesandose.jpeg",
-                        "judo_amateur.jpeg",
-                        "judo_competitivo.jpeg",
-
-                        "mateando.jpeg",
-                        "programar.jpeg",
-                        "dormir_siesta.jpeg",
-                        "ducharse.jpeg",
-                        "escuchar_musica.jpeg",
-
-                        "lavar_platos.jpeg",
-                        "tender_ropa.jpeg",
-                        "haciendo_la_cama.jpeg",
-                        "destender_ropa.jpeg",
-                        "doblar_ropa.jpeg",
-                        "lavando_ropa.jpeg",
-                        "limpiar_baño.jpeg",
-
-                        "almorzar.jpeg",
-                        "cenar.jpeg",
-
-                        "aprender_filosofia.jpeg",
-                        "aprender.jpeg",
-
-                        "buen_momento.jpeg",
-                        "bailando.jpeg",
-                        "mal_momento.jpeg",
-                        "paseando.jpeg",
-
-                        "tomar_gaseosa.jpeg",
-                        "tomar_alcohol.jpeg",
-                        "fumar.jpeg"
-                    ];
                     delegate: Rectangle {
                         id: xAct
                         //width: app.fs * 6
@@ -261,5 +207,90 @@ Rectangle {
                 }
             }
         }
+    }
+    function actualizarActs(){
+        let aActs=[
+                "hidratarse.jpeg",
+                "bicicleta_fija.jpeg",
+                "abdominales.jpeg",
+                "saltando_en_el_lugar.jpeg",
+                "levantar_rodillas.jpeg",
+                "biceps_3kg.jpeg",
+                "biceps_6kg.jpeg",
+
+                "acostado_bicicleta.jpeg",
+                "acostado_tijera_1.jpeg",
+                "acostado_tijera_2.jpeg",
+                "acostado_circulo_1.jpeg",
+                "acostado_circulo_2.jpeg",
+
+                "rotar_cuello.jpeg",
+                "rotar_tronco.jpeg",
+                "rotar_hombros_1.jpeg",
+                "rotar_hombros_2.jpeg",
+                "rotar_hombros_3.jpeg",
+                "sentadillas_3kg.jpeg",
+                "sentadillas_6kg.jpeg",
+                "sentadillas.jpeg",
+                "flexiones.jpeg",
+                "vuelos_laterales_3kg.jpeg",
+                "pesandose.jpeg",
+                "judo_amateur.jpeg",
+                "judo_competitivo.jpeg",
+
+                "mateando.jpeg",
+                "programar.jpeg",
+                "dormir_siesta.jpeg",
+                "ducharse.jpeg",
+                "escuchar_musica.jpeg",
+
+                "lavar_platos.jpeg",
+                "tender_ropa.jpeg",
+                "haciendo_la_cama.jpeg",
+                "destender_ropa.jpeg",
+                "doblar_ropa.jpeg",
+                "lavando_ropa.jpeg",
+                "limpiar_baño.jpeg",
+
+                "almorzar.jpeg",
+                "cenar.jpeg",
+
+                "aprender_filosofia.jpeg",
+                "aprender.jpeg",
+
+                "buen_momento.jpeg",
+                "bailando.jpeg",
+                "mal_momento.jpeg",
+                "paseando.jpeg",
+
+                "tomar_gaseosa.jpeg",
+                "tomar_alcohol.jpeg",
+                "fumar.jpeg"
+            ];
+        let a=[]
+        let sql='SELECT act, COUNT(*) AS total
+FROM actividades
+GROUP BY act
+ORDER BY total DESC;'
+        let cons=unik.getSqlData(sql);
+        //if(cons.length>0){
+        let aActsRanking=[]
+        let json={}
+        for(var i=0;i<cons.length;i++){
+            //txt1.text+=' L:'+cons[0].col[0]
+            //json.id=cons[i].col[0]
+            //json.data=JSON.parse(cons[i].col[1])
+            aActsRanking.push(ons[i].col[0])
+        }
+        for(i=0;i<aActsRanking.length;i++){
+            a.push(aActsRanking[i])
+        }
+        for(i=0;i<aActs.length;i++){
+            if(aActsRanking.indexOf(aActs[i])<0){
+                a.push(aActsRanking[i])
+            }
+        }
+
+        repActs.model=a
     }
 }

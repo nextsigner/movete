@@ -262,6 +262,12 @@ Window {
                                     json TEXT NOT NULL
                                 )'
             app.sqlOpen = unik.sqlQuery(sql)
+            sql='CREATE TABLE IF NOT EXISTS actividades
+                                (
+                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    act TEXT NOT NULL
+                                )'
+            let creado = unik.sqlQuery(sql)
         }
         wd.setCurrentWeek()
         //let nd=new Date(Date.now())
