@@ -1,5 +1,6 @@
 import QtQuick
 import FormAddAct 1.0
+import ActsView 1.0
 
 Rectangle{
     id: r
@@ -19,6 +20,13 @@ Rectangle{
     onDChanged: actualizar()
     //onMChanged: actualizar()
     //onAChanged: actualizar()
+    ActsView{
+        id: actsView
+        d: r.d
+        m: r.m
+        a: r.a
+        parent: visible?xApp:r
+    }
     FormAddAct{
         id: formAddAct;
         d: r.d
@@ -65,7 +73,8 @@ Rectangle{
                     MouseArea {
                         anchors.fill: parent
                         onClicked: {
-                            log.text+='JSON: '+JSON.stringify(j, null, 2)
+                            actsView.j=j
+                            //log.text+='JSON: '+JSON.stringify(j, null, 2)
                             //r.selectedIndex = index
                             //r.cAct = (""+modelData).replace('.jpeg', '')
                         }
