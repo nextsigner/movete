@@ -120,7 +120,6 @@ Rectangle {
 
         }
         Column {
-            visible: r.cAct !== ''
             spacing: app.fs / 2
             Text {
                 text: "Actividad Seleccionada:\n" + r.cAct.toUpperCase().replace(/_/g, ' ')
@@ -128,9 +127,11 @@ Rectangle {
                 color: 'white'
                 width: r.width-app.fs*2
                 wrapMode: Text.WordWrap
+                visible: r.cAct !== ''
             }
             Row{
                 spacing: app.fs
+                visible: r.cAct !== ''
                 Rectangle{
                     width: app.fs*10
                     height: width
@@ -155,7 +156,7 @@ Rectangle {
                     }
                 }
             }
-            Item{width: 1; height: app.fs*2}
+            Item{width: 1; height: app.fs*2; visible: r.cAct !== ''}
             Row{
                 spacing: app.fs
                 Button{
