@@ -104,20 +104,12 @@ Window {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    //formAddAct.visible=true
-                    log.text+='Fecha: '+app.dateSelected.toString()+'<br>'
                     let d=app.dateSelected.getDate()
                     let m=app.dateSelected.getMonth()+1
                     let a=app.dateSelected.getFullYear()
-                    log.text+='d: '+d+'<br>'
-                    log.text+='m: '+m+'<br>'
-                    log.text+='a: '+a+'<br>'
                     for(var i=0;i<colDias.children.length;i++){
                         let hijo=colDias.children[i]
                         if (hijo.isCell) {
-                            log.text+='d2: '+colDias.children[i].d+'<br>'
-                            log.text+='m2: '+colDias.children[i].m+'<br>'
-                            log.text+='a2: '+colDias.children[i].a+'<br>'
                             if(colDias.children[i].d===d && colDias.children[i].m===m && colDias.children[i].a === a){
                                 colDias.children[i].showAddActForm()
                                 break
