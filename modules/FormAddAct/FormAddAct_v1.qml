@@ -290,8 +290,8 @@ ORDER BY total DESC;'
                 a.push(aActs[i])
             }
         }
-        log.text+='a: ['+a.toString().split(',').join(' | ')+']'
+        //log.text+='a: ['+a.toString().split(',').join(' | ')+']'
 
-        //repActs.model=a
+        repActs.model=a
     }
 }
