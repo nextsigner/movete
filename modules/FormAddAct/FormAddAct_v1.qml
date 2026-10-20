@@ -290,7 +290,8 @@ ORDER BY total DESC;'
                 a.push(aActsRanking[i])
             }
         }
+        log.text+='a: ['+a.toString().split(',').join(' | ')+']'
 
-        repActs.model=a
+        //repActs.model=a
     }
 }
