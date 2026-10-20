@@ -115,10 +115,10 @@ Window {
                     for(var i=0;i<colDias.children.length;i++){
                         let hijo=colDias.children[i]
                         if (hijo.isCell) {
-                            log.text+='d2: '+colDias.children.d+'<br>'
-                            log.text+='m2: '+colDias.children.m+'<br>'
-                            log.text+='a2: '+colDias.children.a+'<br>'
-                            if(colDias.children.d===d && colDias.children.m===m && colDias.children.a === a){
+                            log.text+='d2: '+colDias.children[i].d+'<br>'
+                            log.text+='m2: '+colDias.children[i].m+'<br>'
+                            log.text+='a2: '+colDias.children[i].a+'<br>'
+                            if(colDias.children[i].d===d && colDias.children[i].m===m && colDias.children[i].a === a){
                                 colDias.children[i].showAddActForm()
                                 break
                             }
