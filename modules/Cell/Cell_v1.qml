@@ -62,6 +62,14 @@ Rectangle{
                     border.color: 'white'
                     color: 'transparent'
                     property var j: JSON.parse(modelData)
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            log.text+='JSON: '+JSON.stringify(j, null, 2)
+                            //r.selectedIndex = index
+                            //r.cAct = (""+modelData).replace('.jpeg', '')
+                        }
+                    }
                     Image{
                         width: parent.width
                         height: width
