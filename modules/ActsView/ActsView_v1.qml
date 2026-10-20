@@ -26,7 +26,7 @@ Rectangle {
         r.cActIdSelected=r.j.id
         r.cAct=r.j.data.actividad
         //log.text+='r.cActIdSelected: '+r.cActIdSelected
-        log.text+='r.cAct: '+r.cAct
+        //log.text+='r.cAct: '+r.cAct
         //log.text+='JSON 2: '+JSON.stringify(r.j, null, 2)
         actualizar()
         r.visible=true
@@ -125,78 +125,23 @@ Rectangle {
                 font.pixelSize: r.fs
                 color: 'white'
             }
-            Row {
-                spacing: app.fs
-                Text {
-                    text: "Series: "
-                    font.pixelSize: r.fs
-                    color: 'white'
-                    anchors.verticalCenter: spSeries.verticalCenter
-                }
-
-                NsSpinBox {
-                    id: spSeries
-                    fs: app.fs*2
-                    from: 1
-                    to: 50
-                    value: 1
-                    stepSize: 1
-                    anchors.verticalCenter: spSeries.verticalCenter
-                }
-            }
-            Row {
-                spacing: app.fs
-                Text {
-                    text: "Cantidad por serie: "
-                    font.pixelSize: r.fs
-                    color: 'white'
-                    anchors.verticalCenter: spSeries.verticalCenter
-                }
-                NsSpinBox {
-                    id: spSeriesCant
-                    fs: app.fs
-                    from: 1
-                    to: 500
-                    value: 10
-                    stepSize: 1
-                    anchors.verticalCenter: spSeries.verticalCenter
-                }
-            }
             Row{
                 spacing: app.fs
-                Text {
-                    text: "Cantidad total: "+(parseInt(spSeries.value*spSeriesCant.value))
-                    font.pixelSize: r.fs
-                    color: 'white'
-                    anchors.verticalCenter: spSeries.verticalCenter
-                }
-            }
-            Row{
-                spacing: app.fs
-                Button{
-                    text: 'Cancelar'
-                    onClicked: r.visible=false
+                Rectangle{
+                    width: app.fs*10
+                    height: width
+                    color: 'transparent'
+                    anchors.verticalCenter: parent.verticalCenter
+                    Image{
+                        anchors.fill: parent
+                        source: 'file:./imgs/'+r.cAct+'.jpeg'
+                    }
                 }
                 Button{
-                    text: 'Agregar'
+                    text: 'Eliminar Actividad Seleccionada'
+                    anchors.verticalCenter: parent.verticalCenter
                     onClicked: {
-                        let j={}
-                        let d = new Date(Date.now())
-                        const fecha = ""+r.d+"/"+r.m+"/"+r.a;//'9/10/2026';
-                        const jsonData = JSON.stringify({
-                                                            actividad: r.cAct,
-                                                            series: spSeries.value,
-                                                            cantidad: spSeriesCant.value,
-                                                            ms: d.getTime()
-                                                        });
-                        let sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
-                        let ejecutado = unik.sqlQuery(sql)
-                        //log.text+='Ejecutado: '+ejecutado+'\nSQL:'+sql
-                        //txt0.text+='e: '+ejecutado
-                        if(ejecutado){
-                            r.visible=false
-                            r.parent.actualizar()
-                        }
+                        log.text+='Eliminando '+r.cActIdSelected+'<br>'
                     }
                 }
             }
