@@ -83,6 +83,7 @@ Rectangle {
                             onClicked: {
                                 r.selectedIndex = index
                                 r.cAct = (""+modelData).replace('.jpeg', '')
+                                log.text+='Id seleccionado: '+xAct.j.data.id+'<br>'
                             }
                         }
                         Column{
@@ -121,7 +122,7 @@ Rectangle {
             visible: r.cAct !== ''
             spacing: app.fs / 2
             Text {
-                text: "Actividad Seleccionada: " + r.cAct.toUpperCase().replace(/_/g, ' ')
+                text: "Actividad Seleccionada:\n" + r.cAct.toUpperCase().replace(/_/g, ' ')
                 font.pixelSize: r.fs
                 color: 'white'
                 width: r.width-app.fs*2
@@ -143,12 +144,10 @@ Rectangle {
                     text: 'Eliminar Actividad Seleccionada'
                     anchors.verticalCenter: parent.verticalCenter
                     onClicked: {
-                        //log.text+='Eliminando '+r.cActIdSelected+'<br>'
-                        //let sql='DELETE * FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'" AND id = '+r.cActIdSelected+';'
                         const sql = "DELETE FROM registros WHERE fecha = '"+r.d+'/'+r.m+'/'+r.a+"' AND id = "+r.cActIdSelected+";";
-                        log.text+='Sql '+sql+'<br>'
                         let ejecutado = unik.sqlQuery(sql)
-                        log.text+='Eliminado '+ejecutado+'<br>'
+                        if(ejecutado)r.cAct=''
+                        //log.text+='Eliminado '+ejecutado+'<br>'
                     }
                 }
             }
