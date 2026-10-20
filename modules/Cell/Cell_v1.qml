@@ -9,6 +9,8 @@ Rectangle{
     color: r.selected?'green':'black'
     border.width: 2
     border.color: apps.fontColor
+    objectName: 'cell_'+r.ni
+    property bool isCell: true
     property int ni: -1
     property var aDias: ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
     property int d: -1

@@ -110,11 +110,13 @@ Window {
                     let m=app.dateSelected.getMonth()+1
                     let a=app.dateSelected.getFullYear()
                     for(var i=0;i<colDias.children.length;i++){
-                        if(colDias.children.objectName.indexOf('cell_')>=0 && colDias.children.d===d && colDias.children.m===m && colDias.children.a === a){
-                            //colDias.children[i].actualizar()
-                            //colDias.children[app.ciHoy].showAddActForm()
-                            colDias.children[i].showAddActForm()
-                        }
+                        let hijo=colDias.children[i]
+                            if (hijo.isCell) {
+                                if(colDias.children.d===d && colDias.children.m===m && colDias.children.a === a){
+                                    colDias.children[i].showAddActForm()
+                                    break
+                                }
+                            }
                     }
 
 
