@@ -83,7 +83,8 @@ Rectangle {
                             onClicked: {
                                 r.selectedIndex = index
                                 r.cAct = (""+xAct.j.data.actividad).replace('.jpeg', '')
-                                log.text+='Id seleccionado: '+xAct.j.id+'<br>'
+                                r.j=xAct.j
+                                //log.text+='Id seleccionado: '+xAct.j.id+'<br>'
                             }
                         }
                         Column{
@@ -137,7 +138,7 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     Image{
                         anchors.fill: parent
-                        source: 'file:./imgs/'+r.cAct+'.jpeg'
+                        source: r.cAct!==''?'file:./imgs/'+r.cAct+'.jpeg':''
                     }
                 }
                 Button{
@@ -146,7 +147,10 @@ Rectangle {
                     onClicked: {
                         const sql = "DELETE FROM registros WHERE fecha = '"+r.d+'/'+r.m+'/'+r.a+"' AND id = "+r.cActIdSelected+";";
                         let ejecutado = unik.sqlQuery(sql)
-                        if(ejecutado)r.cAct=''
+                        if(ejecutado){
+                            r.cAct=''
+                            r.actualizar()
+                        }
                         //log.text+='Eliminado '+ejecutado+'<br>'
                     }
                 }
