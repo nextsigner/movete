@@ -70,6 +70,7 @@ Rectangle {
 
                         // Usamos r.selectedIndex en lugar de buscar en children
                         property bool selected: (r.selectedIndex === index)
+                        property var j: modelData
 
                         border.width: selected ? 4 : 1
                         border.color: selected ? 'red' : 'white'
@@ -89,7 +90,8 @@ Rectangle {
                                 id: img1
                                 width: parent.parent.width*0.9//height * 0.9
                                 height: width
-                                source: 'file:./imgs/' + modelData
+                                //source: 'file:./imgs/' + modelData
+                                source: 'file:./imgs/'+xAct.j.data.actividad+'.jpeg'
                                 anchors.horizontalCenter: parent.horizontalCenter
                             }
                             Text{
