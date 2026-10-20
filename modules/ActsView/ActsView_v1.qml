@@ -24,7 +24,9 @@ Rectangle {
 
     onJChanged: {
         r.cActIdSelected=r.j.id
-        log.text+='r.cActIdSelected: '+r.cActIdSelected
+        r.cAct=r.j.data.actividad
+        //log.text+='r.cActIdSelected: '+r.cActIdSelected
+        log.text+='r.cAct: '+r.cAct
         //log.text+='JSON 2: '+JSON.stringify(r.j, null, 2)
         actualizar()
         r.visible=true
@@ -50,7 +52,7 @@ Rectangle {
         }
         Flickable{
             width: r.width-app.fs*0.5
-            height: app.fs*30
+            height: app.fs*20
             contentWidth: width
             contentHeight: flow.height
             clip: true
