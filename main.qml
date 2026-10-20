@@ -178,6 +178,12 @@ Window {
                 }
             }
         }
+        Button{
+            text: 'Cerrar'
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            onClicked: xLog.visible=false
+        }
     }
 
 

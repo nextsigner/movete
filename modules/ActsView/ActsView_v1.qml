@@ -22,7 +22,8 @@ Rectangle {
     property var j//: ({})
 
     onJChanged: {
-        log.text+='JSON 2: '+JSON.stringify(j, null, 2)
+        log.text+='JSON 2: '+JSON.stringify(r.j, null, 2)
+        actualizar()
         r.visible=true
     }
     onVisibleChanged: {
@@ -208,5 +209,22 @@ Rectangle {
                 }
             }
         }
+    }
+    function actualizar(){
+        if(!app.sqlOpen)return
+        let sql='SELECT id, json FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'";'
+        let cons=unik.getSqlData(sql);
+        //if(cons.length>0){
+        let a=[]
+        let json={}
+        for(var i=0;i<cons.length;i++){
+            //txt1.text+=' L:'+cons[0].col[0]
+            json.id=cons[i].col[0]
+            json.data=JSON.parse(cons[i].col[1])
+            a.push(JSON.stringify(json))
+        }
+        //txt0.text+=a.toString()
+        //repActividades.model=a
+        repActsDeFecha.model=a
     }
 }
