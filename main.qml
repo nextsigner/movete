@@ -106,7 +106,18 @@ Window {
                 onClicked: {
                     //formAddAct.visible=true
                     log.text+='Fecha: '+app.dateSelected.toString()+'<br>'
-                    colDias.children[app.ciHoy].showAddActForm()
+                    let d=app.dateSelected.getDate()
+                    let m=app.dateSelected.getMonth()+1
+                    let a=app.dateSelected.getFullYear()
+                    for(var i=0;i<colDias.children.length;i++){
+                        if(colDias.children.objectName.indexOf('cell_')>=0 && colDias.children.d===d && colDias.children.m===m && colDias.children.a === a){
+                            //colDias.children[i].actualizar()
+                            //colDias.children[app.ciHoy].showAddActForm()
+                            colDias.children[i].showAddActForm()
+                        }
+                    }
+
+
                     /*return
                     const fecha = '9/10/2026';
                     const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
@@ -145,7 +156,6 @@ Window {
     Rectangle{
         id: xLog
         color: apps.backgroundColor
-        //anchors.fill: parent
         width: parent.width-app.fs*4
         height: parent.height-app.fs*6
         anchors.centerIn: parent
