@@ -18,7 +18,7 @@ Rectangle{
     property int a: -1
     property int altoBotones: ((r.width-app.fs*0.5)-(flowActs.spacing*(cantCols-1)))/cantCols
     property int cantCols: 4
-    property bool selected: (app.dSelected===r.d && app.mSelected===r.m && app.aSelected===r.a)?true:(app.ciHoy===r.ni || (app.dSelected===r.d && app.mSelected===r.m && app.aSelected===r.a))
+    property bool selected: (app.dSelected!==r.d || app.mSelected!==r.m || app.aSelected!==r.a)?false:(app.ciHoy===r.ni || (app.dSelected===r.d && app.mSelected===r.m && app.aSelected===r.a))
     onDChanged: actualizar()
     //onMChanged: actualizar()
     //onAChanged: actualizar()
