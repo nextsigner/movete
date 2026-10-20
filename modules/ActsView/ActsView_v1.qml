@@ -16,13 +16,16 @@ Rectangle {
     // Guardamos la actividad seleccionada y su índice para evitar recorrer el Flow
     property string cAct: ''
     property int selectedIndex: -1
+    property int cActIdSelected: -1
 
     property int altoBotones: ((r.width-app.fs*0.5)-(flow.spacing*(cantCols-1)))/cantCols
     property int cantCols: 2
     property var j//: ({})
 
     onJChanged: {
-        log.text+='JSON 2: '+JSON.stringify(r.j, null, 2)
+        r.cActIdSelected=r.j.id
+        log.text+='r.cActIdSelected: '+r.cActIdSelected
+        //log.text+='JSON 2: '+JSON.stringify(r.j, null, 2)
         actualizar()
         r.visible=true
     }
