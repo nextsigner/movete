@@ -144,7 +144,7 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     onClicked: {
                         //log.text+='Eliminando '+r.cActIdSelected+'<br>'
-                        let sql='DETELE FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'" AND id = '+r.cActIdSelected+';'
+                        let sql='DELETE FROM registros WHERE fecha = "'+r.d+'/'+r.m+'/'+r.a+'" AND id = '+r.cActIdSelected+';'
                         let ejecutado = unik.sqlQuery(sql)
                         log.text+='Eliminado '+ejecutado+'<br>'
                     }
