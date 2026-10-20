@@ -151,6 +151,9 @@ Rectangle {
                         if(ejecutado){
                             r.cAct=''
                             r.actualizar()
+                            for{var i=0;i<colDias.children.length;i++}{
+                                colDias.children[i].actualizar()
+                            }
                         }
                         //log.text+='Eliminado '+ejecutado+'<br>'
                     }
