@@ -109,14 +109,20 @@ Window {
                     let d=app.dateSelected.getDate()
                     let m=app.dateSelected.getMonth()+1
                     let a=app.dateSelected.getFullYear()
+                    log.text+='d: '+d+'<br>'
+                    log.text+='m: '+m+'<br>'
+                    log.text+='a: '+a+'<br>'
                     for(var i=0;i<colDias.children.length;i++){
                         let hijo=colDias.children[i]
-                            if (hijo.isCell) {
-                                if(colDias.children.d===d && colDias.children.m===m && colDias.children.a === a){
-                                    colDias.children[i].showAddActForm()
-                                    break
-                                }
+                        if (hijo.isCell) {
+                            log.text+='d2: '+colDias.children.d+'<br>'
+                            log.text+='m2: '+colDias.children.m+'<br>'
+                            log.text+='a2: '+colDias.children.a+'<br>'
+                            if(colDias.children.d===d && colDias.children.m===m && colDias.children.a === a){
+                                colDias.children[i].showAddActForm()
+                                break
                             }
+                        }
                     }
 
 
@@ -215,28 +221,28 @@ Window {
         let nd=new Date(Date.now())
         app.dateSelected = new Date(nd.getFullYear(), nd.getMonth(), nd.getDate())
         //if(!apps.currentWeek){
-            apps.currentWeek=wd.toMonday(nd)
+        apps.currentWeek=wd.toMonday(nd)
         //}
         app.hoy=new Date(Date.now())
-//        let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
-//        unik.sqliteInit(dataBaseFullPath)
-//        let sql='CREATE TABLE IF NOT EXISTS registros
-//                            (
-//                                id INTEGER PRIMARY KEY AUTOINCREMENT,
-//                                fecha TEXT NOT NULL,
-//                                json TEXT NOT NULL
-//                            )'
-//        let ejecutado = unik.sqlQuery(sql)
-//        status.text='Ejecutado: '+ejecutado
-//        console.log('Ejecutado: '+ejecutado)
+        //        let dataBaseFullPath=unik.getPath(3)+'/movete.sqlite'
+        //        unik.sqliteInit(dataBaseFullPath)
+        //        let sql='CREATE TABLE IF NOT EXISTS registros
+        //                            (
+        //                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+        //                                fecha TEXT NOT NULL,
+        //                                json TEXT NOT NULL
+        //                            )'
+        //        let ejecutado = unik.sqlQuery(sql)
+        //        status.text='Ejecutado: '+ejecutado
+        //        console.log('Ejecutado: '+ejecutado)
 
 
-//        const fecha = '9/10/2026';
-//        const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
+        //        const fecha = '9/10/2026';
+        //        const jsonData = JSON.stringify({ actividad: "Abdominales", realizado: false });
 
-//        // Ojo: Si el json tiene comillas dobles, asegúrate de escapar o usar comillas simples adecuadamente
-//        sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
-//        ejecutado = unik.sqlQuery(sql)
+        //        // Ojo: Si el json tiene comillas dobles, asegúrate de escapar o usar comillas simples adecuadamente
+        //        sql = `INSERT INTO registros (fecha, json) VALUES ('${fecha}', '${jsonData}');`;
+        //        ejecutado = unik.sqlQuery(sql)
         //app.color=ejecutado?'blue':'red'
 
 
