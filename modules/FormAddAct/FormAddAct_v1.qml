@@ -283,7 +283,7 @@ ORDER BY total DESC;'
             //txt1.text+=' L:'+cons[0].col[0]
             //json.id=cons[i].col[0]
             //json.data=JSON.parse(cons[i].col[1])
-            aActsRanking.push(ons[i].col[0])
+            aActsRanking.push(cons[i].col[0])
         }
         for(i=0;i<aActsRanking.length;i++){
             a.push(aActsRanking[i])
