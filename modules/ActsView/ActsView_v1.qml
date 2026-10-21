@@ -151,8 +151,8 @@ Rectangle {
                         if(ejecutado){
                             r.cAct=''
                             r.actualizar()
-                            for(var i=0;i<colDias.children.length;i++){
-                                if(colDias.children.objectName.indexOf('cell_')>=0)colDias.children[i].actualizar()
+                            for(var i=0;i<colDias.children[i].length;i++){
+                                if(colDias.children[i].isCell)colDias.children[i].actualizar()
                             }
                         }
                         //log.text+='Eliminado '+ejecutado+'<br>'
