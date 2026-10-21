@@ -54,7 +54,7 @@ Rectangle {
                     id: repActs
                     //model: ['hidratarse', 'abdominales', 'sentadillas', 'flexiones']
                     //Prompt para icono:
-                    //Creame una imagen tipo ícono para mi app. Debe ser de 128x128 pixeles. No tiene que ser un dibujo detallado. Fondo negro, figura blanca y naranja. Este ícono debe representar de manera gráfica sin texto alguno la siguiente accción: ""
+                    //Creame un icono de app de 128x128 con fondo negro y dibujo solo con trazos blancos que represente la siguiente acción: Programar en informática
 
                     delegate: Rectangle {
                         id: xAct
