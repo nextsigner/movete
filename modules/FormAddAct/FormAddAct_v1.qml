@@ -185,6 +185,9 @@ Rectangle {
                         //log.text+='Ejecutado: '+ejecutado+'\nSQL:'+sql
                         //txt0.text+='e: '+ejecutado
                         if(ejecutado){
+                            const actividad = ""+r.cAct;
+                            sql = `INSERT INTO actividades (act) VALUES ('${actividad}');`;
+                            ejecutado = unik.sqlQuery(sql)
                             r.visible=false
                             r.parent.actualizar()
                         }
