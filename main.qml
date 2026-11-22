@@ -27,8 +27,6 @@ Window {
         app.mSelected=app.dateSelected.getMonth()+1
         app.aSelected=app.dateSelected.getFullYear()
     }
-
-
     Settings{
         id: apps
         property color backgroundColor: 'black'
