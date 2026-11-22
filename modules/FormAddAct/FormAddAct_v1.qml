@@ -42,12 +42,34 @@ Rectangle {
         Row{
             spacing: app.fs
             anchors.horizontalCenter: parent.horizontalCenter
-            CheckBox{
-                text: 'Hogar'
-                color: apps.fontColor
-                checked: apps.tipoActs===0
-                onCheckedChanged: {
-                    if(checked)apps.tipoActs=0
+            Row{
+                spacing: app.fs*0.5
+                Text{
+                    text: 'Hogar'
+                    color: apps.fontColor
+                    font.pixelSize: app.fs
+                }
+                CheckBox{
+                    checked: apps.tipoActs===0
+                    onCheckedChanged: {
+                        if(checked)apps.tipoActs=0
+                        onCheckedChanged: actualizarActs()
+                    }
+                }
+            }
+            Row{
+                spacing: app.fs*0.5
+                Text{
+                    text: 'Física'
+                    color: apps.fontColor
+                    font.pixelSize: app.fs
+                }
+                CheckBox{
+                    checked: apps.tipoActs===1
+                    onCheckedChanged: {
+                        if(checked)apps.tipoActs=1
+                        onCheckedChanged: actualizarActs()
+                    }
                 }
             }
         }
@@ -224,63 +246,69 @@ Rectangle {
         }
     }
     function actualizarActs(){
-        let aActs=[
-                "hidratarse.jpeg",
-                "bicicleta_fija.jpeg",
-                "abdominales.jpeg",
-                "saltando_en_el_lugar.jpeg",
-                "levantar_rodillas.jpeg",
-                "biceps_3kg.jpeg",
-                "biceps_6kg.jpeg",
+        let aActs=[]
+        if(apps.tipoActs===0){
+            aActs=[
+                    "mateando.jpeg",
+                    "programar.jpeg",
+                    "dormir_siesta.jpeg",
+                    "ducharse.jpeg",
+                    "escuchar_musica.jpeg",
 
-                "acostado_bicicleta.jpeg",
-                "acostado_tijera_1.jpeg",
-                "acostado_tijera_2.jpeg",
-                "acostado_circulo_1.jpeg",
-                "acostado_circulo_2.jpeg",
+                    "lavar_platos.jpeg",
+                    "tender_ropa.jpeg",
+                    "haciendo_la_cama.jpeg",
+                    "destender_ropa.jpeg",
+                    "doblar_ropa.jpeg",
+                    "lavando_ropa.jpeg",
+                    "limpiar_baño.jpeg",
 
-                "rotar_cuello.jpeg",
-                "rotar_tronco.jpeg",
-                "rotar_hombros_1.jpeg",
-                "rotar_hombros_2.jpeg",
-                "rotar_hombros_3.jpeg",
-                "sentadillas_3kg.jpeg",
-                "sentadillas_6kg.jpeg",
-                "sentadillas.jpeg",
-                "flexiones.jpeg",
-                "vuelos_laterales_3kg.jpeg",
-                "pesandose.jpeg",
-                "judo_amateur.jpeg",
-                "judo_competitivo.jpeg",
+                    "almorzar.jpeg",
+                    "cenar.jpeg",
 
-                "mateando.jpeg",
-                "programar.jpeg",
-                "dormir_siesta.jpeg",
-                "ducharse.jpeg",
-                "escuchar_musica.jpeg",
+                    "aprender_filosofia.jpeg",
+                    "aprender.jpeg",
 
-                "lavar_platos.jpeg",
-                "tender_ropa.jpeg",
-                "haciendo_la_cama.jpeg",
-                "destender_ropa.jpeg",
-                "doblar_ropa.jpeg",
-                "lavando_ropa.jpeg",
-                "limpiar_baño.jpeg",
+                    "buen_momento.jpeg",
+                    "bailando.jpeg",
+                    "mal_momento.jpeg",
+                    "paseando.jpeg",
 
-                "almorzar.jpeg",
-                "cenar.jpeg",
+                    "tomar_gaseosa.jpeg",
+                    "tomar_alcohol.jpeg",
+                    "fumar.jpeg"
+            ]
+        }else{
+            aActs=[
+                    "hidratarse.jpeg",
+                    "bicicleta_fija.jpeg",
+                    "abdominales.jpeg",
+                    "saltando_en_el_lugar.jpeg",
+                    "levantar_rodillas.jpeg",
+                    "biceps_3kg.jpeg",
+                    "biceps_6kg.jpeg",
 
-                "aprender_filosofia.jpeg",
-                "aprender.jpeg",
+                    "acostado_bicicleta.jpeg",
+                    "acostado_tijera_1.jpeg",
+                    "acostado_tijera_2.jpeg",
+                    "acostado_circulo_1.jpeg",
+                    "acostado_circulo_2.jpeg",
 
-                "buen_momento.jpeg",
-                "bailando.jpeg",
-                "mal_momento.jpeg",
-                "paseando.jpeg",
-
-                "tomar_gaseosa.jpeg",
-                "tomar_alcohol.jpeg",
-                "fumar.jpeg"
+                    "rotar_cuello.jpeg",
+                    "rotar_tronco.jpeg",
+                    "rotar_hombros_1.jpeg",
+                    "rotar_hombros_2.jpeg",
+                    "rotar_hombros_3.jpeg",
+                    "sentadillas_3kg.jpeg",
+                    "sentadillas_6kg.jpeg",
+                    "sentadillas.jpeg",
+                    "flexiones.jpeg",
+                    "vuelos_laterales_3kg.jpeg",
+                    "pesandose.jpeg",
+                    "judo_amateur.jpeg",
+                    "judo_competitivo.jpeg"
+            ]
+        }
             ];
         let a=[]
         let sql='SELECT act, COUNT(*) AS total
@@ -298,7 +326,7 @@ ORDER BY total DESC;'
             aActsRanking.push(cons[i].col[0])
         }
         for(i=0;i<aActsRanking.length;i++){
-            a.push(aActsRanking[i])
+            if(aActs.indexOf(aActsRanking[i])<0)a.push(aActsRanking[i])
         }
         for(i=0;i<aActs.length;i++){
             if(aActsRanking.indexOf(aActs[i])<0){
