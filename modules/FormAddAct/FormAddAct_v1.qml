@@ -53,7 +53,7 @@ Rectangle {
                     checked: apps.tipoActs===0
                     onCheckedChanged: {
                         if(checked)apps.tipoActs=0
-                        onCheckedChanged: actualizarActs()
+                        actualizarActs()
                     }
                 }
             }
@@ -68,7 +68,7 @@ Rectangle {
                     checked: apps.tipoActs===1
                     onCheckedChanged: {
                         if(checked)apps.tipoActs=1
-                        onCheckedChanged: actualizarActs()
+                        actualizarActs()
                     }
                 }
             }
