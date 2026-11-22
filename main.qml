@@ -52,7 +52,10 @@ Window {
     Connections{
         target: qmlErrorLogger
         onMessagesChanged:{
-            log.text+=''+qmlErrorLogger.messages[qmlErrorLogger.messages.length-1]+'<br>'
+            let msg=qmlErrorLogger.messages[qmlErrorLogger.messages.length-1]
+            if(msg.indexOf('SqlDatabase:prepare')<0){
+                log.text+=''+msg+'<br>'
+            }
         }
     }
     Item{

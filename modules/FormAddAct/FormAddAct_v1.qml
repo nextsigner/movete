@@ -277,6 +277,11 @@ Rectangle {
                 }
             }
         }
+        Button{
+            text: 'Cancelar'
+            visible: r.cAct === ''
+            onClicked: r.visible=false
+        }
     }
     function actualizarActs(){
         let aActs=[]
