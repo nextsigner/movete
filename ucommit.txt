@@ -1,1 +1,1 @@
-Se crea logo
+Se agregan checkboxs 1

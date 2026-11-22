@@ -39,6 +39,17 @@ Rectangle {
             font.pixelSize: r.fs
             color: 'white'
         }
+        Row{
+            spacing: app.fs
+            anchors.horizontalCenter: parent.horizontalCenter
+            CheckBox{
+                text: 'Hogar'
+                checked: apps.tipoActs===0
+                onCheckedChanged: {
+                    if(checked)apps.tipoActs=0
+                }
+            }
+        }
         Flickable{
             width: r.width-app.fs*0.5
             height: app.fs*30

@@ -32,6 +32,7 @@ Window {
         property color backgroundColor: 'black'
         property color fontColor: 'white'
         property date currentWeek
+        property int tipoActs: 0
         onCurrentWeekChanged: {
             app.ciHoy=-1
             let nd= new Date(currentWeek.getTime())
