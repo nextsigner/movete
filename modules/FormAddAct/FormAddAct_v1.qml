@@ -52,8 +52,10 @@ Rectangle {
                 CheckBox{
                     checked: apps.tipoActs===0
                     onCheckedChanged: {
-                        if(checked)apps.tipoActs=0
-                        actualizarActs()
+                        if(checked){
+                            apps.tipoActs=0
+                            actualizarActs()
+                        }
                     }
                 }
             }
@@ -67,8 +69,10 @@ Rectangle {
                 CheckBox{
                     checked: apps.tipoActs===1
                     onCheckedChanged: {
-                        if(checked)apps.tipoActs=1
-                        actualizarActs()
+                        if(checked){
+                            apps.tipoActs=1
+                            actualizarActs()
+                        }
                     }
                 }
             }
@@ -309,7 +313,6 @@ Rectangle {
                     "judo_competitivo.jpeg"
             ]
         }
-            ];
         let a=[]
         let sql='SELECT act, COUNT(*) AS total
 FROM actividades
