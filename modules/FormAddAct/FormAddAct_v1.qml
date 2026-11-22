@@ -58,10 +58,19 @@ Rectangle {
                     onCheckedChanged: {
                         if(checked){
                             apps.tipoActs=0
-                            actualizarActs()
+                            cb2.checked=false
                         }else{
                             cb2.checked=true
                         }
+                        actualizarActs()
+                    }
+                    Rectangle{
+                        width: app.fs*2
+                        height: width
+                        color: 'transparent'
+                        border.width: 2
+                        border.color: apps.fontColor
+                        anchors.centerIn: parent
                     }
                 }
             }
@@ -80,10 +89,19 @@ Rectangle {
                     onCheckedChanged: {
                         if(checked){
                             apps.tipoActs=1
-                            actualizarActs()
+                            cb1.checked=false
                         }else{
                             cb1.checked=true
                         }
+                        actualizarActs()
+                    }
+                    Rectangle{
+                        width: app.fs*2
+                        height: width
+                        color: 'transparent'
+                        border.width: 2
+                        border.color: apps.fontColor
+                        anchors.centerIn: parent
                     }
                 }
             }
