@@ -44,6 +44,7 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             CheckBox{
                 text: 'Hogar'
+                color: apps.fontColor
                 checked: apps.tipoActs===0
                 onCheckedChanged: {
                     if(checked)apps.tipoActs=0
