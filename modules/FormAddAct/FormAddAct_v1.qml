@@ -48,13 +48,19 @@ Rectangle {
                     text: 'Hogar'
                     color: apps.fontColor
                     font.pixelSize: app.fs
+                    anchors.verticalCenter: parent.verticalCenter
                 }
                 CheckBox{
+                    id: cb1
+                    width: app.fs*3
                     checked: apps.tipoActs===0
+                    anchors.verticalCenter: parent.verticalCenter
                     onCheckedChanged: {
                         if(checked){
                             apps.tipoActs=0
                             actualizarActs()
+                        }else{
+                            cb2.checked=true
                         }
                     }
                 }
@@ -65,13 +71,18 @@ Rectangle {
                     text: 'Física'
                     color: apps.fontColor
                     font.pixelSize: app.fs
+                    anchors.verticalCenter: parent.verticalCenter
                 }
                 CheckBox{
+                    id: cb2
                     checked: apps.tipoActs===1
+                    anchors.verticalCenter: parent.verticalCenter
                     onCheckedChanged: {
                         if(checked){
                             apps.tipoActs=1
                             actualizarActs()
+                        }else{
+                            cb1.checked=true
                         }
                     }
                 }
