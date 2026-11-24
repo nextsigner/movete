@@ -58,9 +58,6 @@ Rectangle {
                     onCheckedChanged: {
                         if(checked){
                             apps.tipoActs=0
-                            cb2.checked=false
-                        }else{
-                            cb2.checked=true
                         }
                         actualizarActs()
                     }
@@ -89,9 +86,8 @@ Rectangle {
                     onCheckedChanged: {
                         if(checked){
                             apps.tipoActs=1
-                            cb1.checked=false
                         }else{
-                            cb1.checked=true
+                            apps.tipoActs=0
                         }
                         actualizarActs()
                     }
