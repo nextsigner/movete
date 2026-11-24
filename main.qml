@@ -53,7 +53,7 @@ Window {
         target: qmlErrorLogger
         onMessagesChanged:{
             let msg=qmlErrorLogger.messages[qmlErrorLogger.messages.length-1]
-            if(msg.indexOf('SqlDatabase:prepare')<0){
+            if(msg.indexOf('QSqlQuery:prepare')<0){
                 log.text+=''+msg+'<br>'
             }
         }
